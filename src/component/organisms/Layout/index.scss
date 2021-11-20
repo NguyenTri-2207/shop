@@ -1,0 +1,95 @@
+.menu {
+  display: flex;
+  padding: 0 15px;
+  align-items: center;
+  justify-content: space-between;
+  .menuLeft {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .menuRight {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .btnheart {
+      margin-top: 5px;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+}
+.burger {
+  outline: 0;
+  border: 0;
+  margin-top: 8px;
+  padding: 0 8px 0 0;
+  background: transparent;
+  &:hover {
+    border: 0;
+    outline: 0;
+  }
+  &:focus {
+    border: 0;
+    box-shadow: none;
+  }
+}
+.menuMoblie {
+  .accordion {
+    border: 0 !important;
+    box-shadow: none !important;
+    button {
+      font-weight: bold;
+      color: #333;
+      font-size: 20px;
+      padding: 16px 16px;
+      &:focus {
+        box-shadow: none !important;
+        background-color: #fff;
+        color: #333;
+      }
+    }
+    .accordion-body {
+      font-size: 18px;
+      padding-left: 32px;
+      padding-top: 0px;
+      font-weight: 500;
+    }
+  }
+  .info {
+    background: #202020;
+    padding: 40px 10px;
+    border-radius: 10px;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  }
+  p {
+    color: #fff;
+  }
+  h3 {
+    color: #fff;
+    text-align: center;
+    padding-bottom: 16px;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+  li {
+    display: inline-block;
+  }
+  a i {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    background: #000;
+    margin-right: 5px;
+    color: #fff;
+  }
+}
