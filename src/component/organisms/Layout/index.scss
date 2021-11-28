@@ -1,18 +1,87 @@
 .menu {
-  display: flex;
+  flex-wrap: nowrap !important;
+  width: 100%;
   padding: 0 15px;
   align-items: center;
   justify-content: space-between;
   .menuLeft {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
+    justify-content: space-between;
+    @media (max-width: 768px) {
+      justify-content: flex-start;
+    }
+    &_title {
+      text-decoration: none;
+      padding: 0px 18px 4px;
+      display: inline-block;
+      font-weight: 400;
+      font-size: 16px;
+      letter-spacing: 0.1px;
+      color: #2c2c2c;
+      @media (max-width: 991px) {
+        padding: 0px 8px 4px;
+      }
+    }
+    &_titleDropdown {
+      position: relative;
+      a {
+        position: relative;
+        z-index: 66;
+
+        padding: 0 25px 4px 15px;
+        font-size: 16px;
+        letter-spacing: 0.1px;
+        color: #2c2c2c;
+        &::after {
+          display: none;
+        }
+      }
+      svg {
+        font-size: 11px;
+        position: absolute;
+        top: 8px;
+        right: 6px;
+        z-index: 0;
+      }
+      .dropdown-menu {
+        width: 250px;
+        margin-top: 12px;
+        padding: 0;
+        border: 0;
+
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
+        &::after {
+          content: " ";
+          position: absolute;
+          left: 30px;
+          top: -15px;
+          border-top: none;
+          border-right: 15px solid transparent;
+          border-left: 15px solid transparent;
+          border-bottom: 15px solid white;
+        }
+        a {
+          padding: 16px;
+          font-size: 16px;
+          letter-spacing: 0.1px;
+          color: #2c2c2c;
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
   }
   .menuRight {
-    width: 35%;
+    width: 130px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (min-width: 768px) {
+      width: 150px;
+    }
     .btnheart {
       margin-top: 5px;
       &:focus {
@@ -41,7 +110,6 @@
     border: 0 !important;
     box-shadow: none !important;
     button {
-      font-weight: bold;
       color: #333;
       font-size: 20px;
       padding: 16px 16px;
@@ -55,7 +123,6 @@
       font-size: 18px;
       padding-left: 32px;
       padding-top: 0px;
-      font-weight: 500;
     }
   }
   .info {

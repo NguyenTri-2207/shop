@@ -1,0 +1,124 @@
+.love {
+  position: absolute;
+  background: #fff;
+  z-index: 222;
+  width: 300px;
+  right: 60px;
+  top: 60px;
+  border-radius: 4px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  @media (min-width: 768px) {
+    right: 15%;
+  }
+  @media (min-width: 991) {
+    right: 10%;
+  }
+  // &::after {
+  //   content: " ";
+  //   position: absolute;
+  //   right: 24px;
+  //   top: -15px;
+  //   border-top: none;
+  //   border-right: 15px solid transparent;
+  //   border-left: 15px solid transparent;
+  //   border-bottom: 15px solid #f4f5f7;
+  // }
+  &_header {
+    border-radius: 4px 4px 0 0;
+    background: #f4f5f7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 15px;
+    svg {
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+  .content {
+    padding: 16px;
+    &_product {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgb(136, 131, 131);
+      padding-bottom: 8px;
+      padding-top: 8px;
+    }
+    &_img {
+      a {
+        img {
+          height: 100%;
+        }
+      }
+    }
+    &_title {
+      h6 {
+        font-size: 14px;
+        margin-bottom: 0px;
+      }
+    }
+    &_size {
+      font-size: 12px;
+      margin-bottom: 0px;
+      margin-right: 4px;
+    }
+    &_color {
+      font-size: 12px;
+      margin-bottom: 4px;
+      margin-left: 4px;
+    }
+    &_price {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+      margin-left: 4px;
+    }
+    &_deleteProduct {
+      svg {
+        background: white;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    }
+  }
+  &_footer {
+    .btnCheckout {
+      background: #333;
+      width: 100%;
+      border: 1px solid #333;
+      &:focus {
+        box-shadow: none;
+        background: #333;
+      }
+      &:active {
+        background: #333;
+      }
+      &:hover {
+        background: #fff;
+        border: 1px solid #333;
+        color: #333;
+      }
+    }
+    .btnEdit {
+      background: #fff;
+      color: #333;
+      border: 1px solid #333;
+      width: 100%;
+      &:focus {
+        box-shadow: none;
+        background: #fff;
+        color: #333;
+      }
+      &:active {
+        background: #fff;
+        color: #333;
+      }
+      &:hover {
+        background: #333;
+        color: #fff;
+      }
+    }
+  }
+}
