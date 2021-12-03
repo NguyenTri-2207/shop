@@ -1,18 +1,19 @@
-import React, { useState, useContext } from "react";
-import "./index.scss";
-import logo from "../../../images/logo.png";
+import React, { useState } from "react";
+
 import { BiUser, BiMenu } from "react-icons/bi";
-import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
+import {
+  AiOutlineHeart,
+  AiOutlineShoppingCart,
+  AiFillGithub,
+} from "react-icons/ai";
 import { GrFormClose } from "react-icons/gr";
-import { FaFacebookF } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
-import { AiFillGithub } from "react-icons/ai";
-import { FaInstagram } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import Cart from "../../molecules/Cart";
-import Love from "../../molecules/Love";
-import { Context } from "../../../redux/store";
+import {
+  FaTwitter,
+  FaInstagram,
+  FaYoutube,
+  FaFacebookF,
+  FaChevronDown,
+} from "react-icons/fa";
 import {
   Navbar,
   Badge,
@@ -20,17 +21,23 @@ import {
   Nav,
   Accordion,
   NavDropdown,
-  OverlayTrigger,
   Button,
 } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import Cart from "../../molecules/Cart";
+import Love from "../../molecules/Love";
 import LogIn from "../Login";
+import "./index.scss";
+import logo from "../../../images/logo.png";
+import LoginSuccess from "../../molecules/LoginSuccess";
 const Layout = ({ children }) => {
   const [show, setShow] = useState(false);
   const [login, setLogin] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [showLove, setShowLove] = useState(false);
-  const { email, name, setEmail, setName } = useContext(Context);
-
+  const [showLoginSuccess, setShowLoginSuccess] = useState(false);
+  const user = useSelector((state) => state.user[0]);
+  // console.log(user);
   const onClickCloseLove = () => {
     setShowLove(!showLove);
     setShowCart(false);
@@ -38,6 +45,13 @@ const Layout = ({ children }) => {
   const onClickCloseCart = () => {
     setShowLove(false);
     setShowCart(!showCart);
+  };
+
+  const handleUserClick = () => {
+    setLogin(true);
+    if (user) {
+      setShowLoginSuccess(!showLoginSuccess);
+    }
   };
   return (
     <>
@@ -89,7 +103,7 @@ const Layout = ({ children }) => {
 
               <div className="menuRight col-4 col-md-3">
                 <Button
-                  onClick={() => setLogin(true)}
+                  onClick={handleUserClick}
                   className="btnheart"
                   variant="none pb-0 px-1 mt-0"
                 >
@@ -231,6 +245,13 @@ const Layout = ({ children }) => {
       </div>
       <LogIn show={login} handleClose={() => setLogin(false)} />
       {showLove && <Love ClickClose={() => setShowLove(false)} />}
+      {showLoginSuccess && (
+        <LoginSuccess
+          name={user.name}
+          src={user.imageUrl}
+          ClickClose={() => setShowLoginSuccess(false)}
+        />
+      )}
     </>
   );
 };

@@ -1,26 +1,41 @@
-.banner{
-    margin: 10px 0;
-    border-radius: 10px;
-    overflow: hidden;
-    @media only screen and (max-width : 1024px) {
-        margin: 10px 10px;
+.banner {
+  overflow: hidden;
+  &_slider {
+    .slick-prev {
+      left: 1px;
+      z-index: 1;
     }
-    &_slider{
-        .slick-prev{
-            left: 1px;
-            z-index: 1;
-        }
-        .slick-prev:before{
-            font-size: 40px;
-            color: #00483d; 
-        }
-        .slick-next{
-            right: 20px;        
-        }
-        .slick-next:before{
-            font-size: 40px;
-            color: #00483d;
-            right: 20px; 
-        }
+    .slick-prev:before {
+      font-size: 20px;
+      color: #fff;
     }
+    .slick-next {
+      right: 20px;
+    }
+    .slick-next:before {
+      font-size: 20px;
+      color: #fff;
+      right: 20px;
+    }
+  }
+}
+.SliderImg {
+  position: relative;
+  height: 300px;
+  h2 {
+    position: absolute;
+    z-index: 1;
+    top: 50%; /* position the top  edge of the element at the middle of the parent */
+    left: 30%; /* position the left edge of the element at the middle of the parent */
+    color: #fff;
+    transform: translate(-50%, -50%);
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
 }
