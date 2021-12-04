@@ -1,16 +1,17 @@
 .cardHeader {
   padding: 8px 24px;
   height: 40px;
-  background-color: #00483d;
   border-radius: 10px;
   margin: 0 10px;
   border: 0;
-  color: white;
+  color: #2c2c2c;
   text-align: center;
   font-size: 14px;
-  font-family: Roboto;
-  font-weight: 500;
+  font-weight: 600;
+
   cursor: pointer;
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.16), 1px 3px 6px rgba(0, 0, 0, 0.23);
+
   @media (max-width: 500px) {
     width: 160px;
     margin: 16px 8px 0;
@@ -20,5 +21,7 @@
   }
   &:hover {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+  span {
   }
 }

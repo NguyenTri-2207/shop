@@ -202,7 +202,7 @@ const dataMenu = [
   {
     id: 4,
     tab: "tab4",
-    title: "Accessories",
+    title: "Linh Kiện",
     data: [
       {
         title: "Samsung Galaxy A52 5G",
@@ -300,11 +300,14 @@ const MenuBot = () => {
   // console.log(dataLength);
   return (
     <div className="container">
-      <div className="MenuBot mt-4">
+      <div className="MenuBot">
         {dataMenu.map((item) => {
           return (
             <CardHeader
-              styless={tab.id === item.id ? { background: "#333" } : {}}
+              styless={tab.id === item.id ? {
+                background: "transparent linear-gradient(90deg, #009981 0%, #00483d 100%) 0% 0% no-repeat"
+                , color: "#fff"
+              } : {}}
               onClick={() => dispatch({ type: `${item.tab}`, data: item.data })}
               key={item.id}
               title={item.title}

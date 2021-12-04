@@ -1,3 +1,18 @@
+.myHeader {
+  padding: 8px 0;
+  background: rgb(230, 222, 222);
+  width: 100%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.menuboi {
+  height: 56px;
+}
+.sticky {
+  position: fixed !important;
+  top: 0;
+  height: 50px;
+  z-index: 999;
+}
 .menu {
   flex-wrap: nowrap !important;
   width: 100%;
@@ -6,21 +21,51 @@
   justify-content: space-between;
   .menuLeft {
     display: flex;
+
     align-items: flex-end;
     justify-content: space-between;
     @media (max-width: 768px) {
       justify-content: flex-start;
     }
+    &_logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      img {
+        width: 40px;
+        height: 40px;
+        @media (max-width: 768px) {
+          width: 30px;
+          height: 30px;
+        }
+      }
+      h1 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #444444;
+        padding-left: 8px;
+        margin: 0;
+        color: #956d14;
+        @media (max-width: 768px) {
+          font-size: 16px;
+        }
+      }
+    }
     &_title {
       text-decoration: none;
       padding: 0px 18px 4px;
       display: inline-block;
-      font-weight: 400;
-      font-size: 16px;
+      font-size: 18px;
+      font-weight: 600;
       letter-spacing: 0.1px;
       color: #2c2c2c;
-      @media (max-width: 991px) {
+      @media (max-width: 1200px) {
         padding: 0px 8px 4px;
+        font-size: 16px;
+      }
+      @media (max-width: 991px) {
+        font-size: 15px;
       }
     }
     &_titleDropdown {
@@ -30,9 +75,17 @@
         z-index: 66;
 
         padding: 0 25px 4px 15px;
-        font-size: 16px;
+        font-size: 18px;
+        font-weight: 600;
         letter-spacing: 0.1px;
         color: #2c2c2c;
+        @media (max-width: 1200px) {
+          font-size: 16px;
+          padding: 0 25px 4px 8px;
+        }
+        @media (max-width: 991px) {
+          font-size: 15px;
+        }
         &::after {
           display: none;
         }
@@ -90,6 +143,7 @@
     }
   }
 }
+
 .burger {
   outline: 0;
   border: 0;

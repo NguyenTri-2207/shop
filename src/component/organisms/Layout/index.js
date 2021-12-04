@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { BiUser, BiMenu } from "react-icons/bi";
 import {
@@ -28,7 +28,7 @@ import Cart from "../../molecules/Cart";
 import Love from "../../molecules/Love";
 import LogIn from "../Login";
 import "./index.scss";
-import logo from "../../../images/logo.png";
+import logo from "../../../images/icons/logo.png";
 import LoginSuccess from "../../molecules/LoginSuccess";
 const Layout = ({ children }) => {
   const [show, setShow] = useState(false);
@@ -53,40 +53,59 @@ const Layout = ({ children }) => {
       setShowLoginSuccess(!showLoginSuccess);
     }
   };
+
+
+  ///sticky
+  const [sticky, setSticky] = useState(false);
+  useEffect(() => {
+    const scrollCallBack = window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 160) {
+        setSticky(true)
+      } else {
+        setSticky(false);
+      }
+    });
+    return () => {
+      window.removeEventListener("scroll", scrollCallBack);
+    };
+  }, []);
   return (
     <>
       <div>
-        <Navbar bg="light" expanded={show} className="position-relative">
+        <div className={`${sticky ? "d-block" : "d-none"} menuboi`}></div>
+        <Navbar bg="light" expanded={show} id="myHeader" className={`${sticky ? "sticky" : ""} myHeader`}>
           <div className="container">
+
             <div className="menu row">
-              <div className="menuLeft  col-8 col-md-9 ">
+              <div className="menuLeft  col-8 col-md-10  col-xl-9  ">
                 <button
                   className={`burger d-block d-md-none`}
                   onClick={() => setShow(true)}
                 >
                   <BiMenu style={{ fontSize: "30px" }} />
                 </button>
-                <Navbar.Brand href="/">
-                  <img width={100} src={logo} alt="logo" />
-                </Navbar.Brand>
+                <a href="/" className="menuLeft_logo">
+                  <img src={logo} alt="logo" /> <h1>TrisApple</h1>
+                </a>
                 <div className=" d-none d-md-block col-8 ">
                   <div className=" d-flex">
                     <a href="#action1" className="menuLeft_title">
-                      Home
+                      Trang Chủ
                     </a>
-                    <a className="menuLeft_title" href="#action2">
-                      Shop
-                    </a>
+
                     <div className="menuLeft_titleDropdown">
-                      <NavDropdown title="Product" id="basic-nav-dropdown">
+                      <NavDropdown title="Sản Phẩm" id="basic-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1">
-                          Men's clothes
+                          Iphone
                         </NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.2">
-                          Girl's clothes
+                          Apple Watch
                         </NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.3">
-                          Kid's clothes
+                          MacBook
+                        </NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.3">
+                          Linh Kiện
                         </NavDropdown.Item>
                       </NavDropdown>
                       <FaChevronDown />
@@ -95,13 +114,16 @@ const Layout = ({ children }) => {
                       About Us
                     </a> */}
                     <a className="menuLeft_title" href="#action2">
-                      Contact Us
+                      Bảo Hành
+                    </a>
+                    <a className="menuLeft_title" href="#action2">
+                      Liên Hệ
                     </a>
                   </div>
                 </div>
               </div>
 
-              <div className="menuRight col-4 col-md-3">
+              <div className="menuRight col-4 col-md-2  col-xl-3">
                 <Button
                   onClick={handleUserClick}
                   className="btnheart"
@@ -125,6 +147,7 @@ const Layout = ({ children }) => {
                     </Badge>
                   </Button>
                 </div>
+                {showLove && <Love ClickClose={() => setShowLove(false)} />}
                 <div className="positon-relative">
                   <Button
                     className="btnheart"
@@ -244,7 +267,7 @@ const Layout = ({ children }) => {
         {children}
       </div>
       <LogIn show={login} handleClose={() => setLogin(false)} />
-      {showLove && <Love ClickClose={() => setShowLove(false)} />}
+
       {showLoginSuccess && (
         <LoginSuccess
           name={user.name}
