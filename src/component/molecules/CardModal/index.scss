@@ -1,5 +1,6 @@
 .CartModal {
   max-width: 800px;
+
   @media (min-width: 768px) and (max-width: 992px) {
     max-width: 700px !important;
   }
@@ -13,6 +14,7 @@
   &_header {
     border: 0 !important;
   }
+
   &_Ram {
     cursor: pointer;
     margin: 8px 10px 0px 0px;
@@ -115,7 +117,7 @@
     flex-wrap: wrap;
     justify-content: center;
     button {
-      margin: 0 4px;
+      margin: 8px 4px;
       border: 1px solid transparent;
       border-radius: 8px;
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -156,6 +158,83 @@
         letter-spacing: 0.2px;
         color: #333;
       }
+    }
+  }
+}
+.tooltip-btn {
+  background: transparent;
+  border: 0;
+  svg {
+    color: #575c62;
+    margin-bottom: 2px;
+  }
+}
+//sale
+.sale {
+  width: 100%;
+  margin-bottom: 20px !important;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  overflow: hidden;
+  &_title {
+    width: 100%;
+    padding: 8px 10px;
+    background: #d1d5db;
+    h5 {
+      margin-bottom: 0px;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #444444;
+    }
+  }
+  &_content {
+    padding: 8px 0;
+    ul {
+      counter-reset: item;
+      margin: 0;
+      padding: 0 0 0 17px;
+      list-style: none;
+      font-size: 14px;
+      li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 4px;
+        font-size: 12px;
+        color: #444444;
+        position: relative;
+        svg {
+          color: #2ba832;
+          margin-right: 6px;
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+}
+//pay
+.pay {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+  a {
+    background: transparent linear-gradient(0deg, #fd475a 0%, #bf1e2d 100%) 0%
+      0% no-repeat padding-box;
+
+    box-shadow: 0 4px 6px #00000029;
+    border-radius: 3px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    width: 75%;
+    text-align: center;
+    line-height: 36px;
+    font-weight: bold;
+    &:hover {
+      color: #fff;
+      background: transparent linear-gradient(180deg, #fd475a 0%, #bf1e2d 100%)
+        0% 0% no-repeat padding-box;
     }
   }
 }
