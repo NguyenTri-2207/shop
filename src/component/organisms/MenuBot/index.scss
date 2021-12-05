@@ -1,5 +1,16 @@
-.MenuBot {
+.product {
   margin-top: 40px;
+  @media (max-width: 768px) {
+    margin-top: 0px;
+  }
+  &_menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
+  }
 }
 .LoadMore {
   button {
@@ -9,5 +20,15 @@
     border-radius: 8px;
     outline: 0;
     border: 1px solid #333;
+  }
+}
+// .sort?
+.sort {
+  margin: 24px auto;
+  display: flex;
+
+  @media (max-width: 768px) {
+    margin: 32px auto;
+    justify-content: center;
   }
 }
