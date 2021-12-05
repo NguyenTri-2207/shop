@@ -2,6 +2,9 @@
   border-radius: 16px;
   margin-bottom: 70px;
   overflow: hidden;
+  @media (max-width: 768px) {
+    margin-bottom: 24px;
+  }
   .slick-prev {
     left: 1px;
     z-index: 1;

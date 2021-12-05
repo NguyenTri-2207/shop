@@ -2,7 +2,7 @@
   padding: 8px 24px;
   height: 40px;
   border-radius: 10px;
-  margin: 0 10px;
+  margin-right: 24px;
   border: 0;
   color: #2c2c2c;
   text-align: center;
@@ -13,7 +13,7 @@
   box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.16), 1px 3px 6px rgba(0, 0, 0, 0.23);
 
   @media (max-width: 500px) {
-    width: 160px;
+    width: 130px;
     margin: 16px 8px 0;
   }
   &:focus {

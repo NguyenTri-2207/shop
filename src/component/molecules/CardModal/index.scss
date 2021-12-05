@@ -64,11 +64,10 @@
   background-color: rgb(229, 242, 255);
   color: #00483d;
   &::before {
-    content: "";
     position: absolute;
     top: 0;
     left: 0;
-    content: "\1F5F8";
+    content: "\2713";
     display: inline-block;
     color: #fff;
     width: 15px;

@@ -8,8 +8,8 @@ import {
   AiFillStar,
   AiOutlineEye,
 } from "react-icons/ai";
-import { FaInfoCircle } from 'react-icons/fa'
-import { BsFillCheckCircleFill } from "react-icons/bs"
+import { FaInfoCircle } from "react-icons/fa";
+import { BsFillCheckCircleFill } from "react-icons/bs";
 const dollarUSLocale = Intl.NumberFormat("en-US");
 const dataColor = ["#edddc6", "#033357", "#1d1d1d", "#ebece6"];
 const dataStart = [1, 2, 3, 4, 5];
@@ -155,25 +155,31 @@ export default function CartModal(props) {
               </div>
               <div className="sale_content">
                 <ul>
-                  <li ><BsFillCheckCircleFill />
-                    <p className="m-0">Giảm tới 1.500.000đ khi Thu cũ - Lên đời {props.title} </p>
+                  <li>
+                    <BsFillCheckCircleFill />
+                    <p className="m-0">
+                      Giảm tới 1.500.000đ khi Thu cũ - Lên đời {props.title}{" "}
+                    </p>
                   </li>
-                  <li><BsFillCheckCircleFill />
+                  <li>
+                    <BsFillCheckCircleFill />
                     <p className="m-0">Giảm đến 50% phụ kiện mua kèm.</p>
                   </li>
-                  <li><BsFillCheckCircleFill />
+                  <li>
+                    <BsFillCheckCircleFill />
                     <p className="m-0">Trả Góp 0%, Lấy Máy Ngay</p>
-                  </li> <li><BsFillCheckCircleFill />
-                    <p className="m-0">Bảo Hành Super Vip Lỗi Đổi Ngay Máy Mới 100%</p>
+                  </li>{" "}
+                  <li>
+                    <BsFillCheckCircleFill />
+                    <p className="m-0">
+                      Bảo Hành Super Vip Lỗi Đổi Ngay Máy Mới 100%
+                    </p>
                   </li>
                 </ul>
               </div>
             </div>
             <div className="pay">
-              <a href="/giohang"
-              >
-                Mua Ngay
-              </a>
+              <a href="/giohang">Mua Ngay</a>
               <Button
                 className="btnheart"
                 variant="none d-flex position-relative  pb-0"
@@ -225,11 +231,13 @@ export default function CartModal(props) {
                 </Tooltip>
               }
             >
-              <button className="tooltip-btn "><FaInfoCircle /></button>
+              <button className="tooltip-btn ">
+                <FaInfoCircle />
+              </button>
             </OverlayTrigger>
           </div>
         </Modal.Body>
       </Modal>
-    </div >
+    </div>
   );
 }
