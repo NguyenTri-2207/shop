@@ -13,10 +13,9 @@ const SliderImg = ({ src }) => {
 };
 const Banner = () => {
   var settings = {
-    dots: true,
-    dotsClass: "slick-dots slick-thumb",
+    dots: false,
     infinite: true,
-    speed: 500,
+    speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
@@ -38,9 +37,9 @@ const Banner = () => {
         />
       </div>
       <Slider {...settings} className="banner_slider">
-        <SliderImg src="https://cdn.tgdd.vn/2021/11/banner/830-300-830x300-24.png" />
-        <SliderImg src="https://ctmobile.vn/upload/lamhinh-01-2.jpg" />
-        <SliderImg src="https://devicer.cmsmasters.net/wp-content/uploads/revslider/home_slider_video/03-1.jpg" />
+        <SliderImg src="https://images.fpt.shop/unsafe/fit-in/800x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/12/3/637741411837311205_F-H1_800x300%20(1).png" />
+        <SliderImg src="https://images.fpt.shop/unsafe/fit-in/800x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/11/30/637739082837263999_pk%20my.png" />
+        {/* <SliderImg src="" /> */}
       </Slider>
     </div>
   );
