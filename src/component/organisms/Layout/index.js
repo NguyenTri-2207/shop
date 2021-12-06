@@ -37,7 +37,8 @@ const Layout = ({ children }) => {
   const [showLove, setShowLove] = useState(false);
   const [showLoginSuccess, setShowLoginSuccess] = useState(false);
   const user = useSelector((state) => state.user[0]);
-  // console.log(user);
+  const dataCart = useSelector((state) => state.cart);
+  // console.log(dataCart);
   const onClickCloseLove = () => {
     setShowLove(!showLove);
     setShowCart(false);
@@ -160,10 +161,10 @@ const Layout = ({ children }) => {
                       style={{ fontSize: "10px", right: 1, top: -1 }}
                       bg="secondary"
                     >
-                      0
+                      {dataCart.length - 1}
                     </Badge>
                   </Button>
-                  {showCart && <Cart ClickClose={() => setShowCart(false)} />}
+                  {showCart && <Cart ClickClose={() => setShowCart(false)} data={dataCart} />}
                 </div>
               </div>
             </div>

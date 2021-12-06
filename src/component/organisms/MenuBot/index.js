@@ -9,6 +9,8 @@ import Select from "react-select";
 import CardHeader from "../../molecules/CardHeader";
 import CardProduct from "../../molecules/CardProduct";
 import "./index.scss";
+import { addCart } from "../../../redux/action/cart";
+import { useDispatch } from "react-redux";
 import CardModal from "../../molecules/CardModal";
 import { dataMenu, dataSortPrice } from "./data.js";
 const reducer = (state, action) => {
@@ -59,6 +61,7 @@ const MenuBot = () => {
 
   const [dataProduct, setDataProduct] = useState(tab.data);
   const [dataCard, setDataCard] = useState([]);
+  const [dataCart, setDataCart] = useState({});
   const handleLoadMore = () => {
     setLimit(limit + 4);
   };
@@ -112,6 +115,17 @@ const MenuBot = () => {
       return { ...provided, opacity, transition };
     }
   }
+  // cart
+  const dispatchCart = useDispatch();
+
+  const handleaddCard = (item) => {
+    setDataCart(item)
+  }
+  useEffect(() => {
+    const action = addCart(dataCart);
+    dispatchCart(action);
+  }, [dataCart, dispatchCart])
+  // console.log(dataCart)
   return (
     <div className="container">
       <div className="product">
@@ -165,6 +179,7 @@ const MenuBot = () => {
                   priceDiscount={item.priceDiscount}
                   onClicSee={() => HandleClickSee(item)}
                   start={item.start}
+                  onClickaddCard={() => handleaddCard(item)}
                 />
               </div>
             ))}
