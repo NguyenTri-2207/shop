@@ -1,3 +1,60 @@
-.loging_sucsess {
+.modal {
+  position: relative;
+}
+.btn_close {
   position: absolute;
+  right: 0;
+  svg {
+    font-size: 25px;
+  }
+}
+// .loging_sucsess {
+//   position: absolute;
+// }
+.header {
+  img {
+    margin-top: 24px;
+  }
+  h3 {
+    color: #1860c9;
+  }
+}
+.SigninButton {
+  --height: 44px;
+  width: 320px;
+  text-align: center;
+  height: var(--height);
+  line-height: var(--height);
+  border: 2px solid #dce0e3;
+  background-color: #fff;
+  border-radius: 44px;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  padding-left: 16px;
+  margin: auto;
+  img {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+  }
+  span {
+    font-weight: 600;
+    line-height: 40px;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    color: #35414c;
+    font-size: 16px;
+  }
+}
+.Footer {
+  button {
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #1860c9;
+    font-weight: bold;
+  }
 }

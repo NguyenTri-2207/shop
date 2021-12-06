@@ -4,8 +4,6 @@ import { Button } from "react-bootstrap";
 import { GrFormClose } from "react-icons/gr";
 const dollarUSLocale = Intl.NumberFormat("en-US");
 export default function Cart({ ClickClose, deleteProduct, data }) {
-
-  console.log(data);
   return (
     <div className="cart pb-3">
       <div className="cart_header ">

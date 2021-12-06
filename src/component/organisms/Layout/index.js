@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import {
+  Navbar,
+  Badge,
+  Offcanvas,
+  Nav,
+  Accordion,
+  NavDropdown,
+  Button,
+} from "react-bootstrap";
 
+// icons
 import { BiUser, BiMenu } from "react-icons/bi";
 import {
   AiOutlineHeart,
@@ -14,31 +25,39 @@ import {
   FaFacebookF,
   FaChevronDown,
 } from "react-icons/fa";
-import {
-  Navbar,
-  Badge,
-  Offcanvas,
-  Nav,
-  Accordion,
-  NavDropdown,
-  Button,
-} from "react-bootstrap";
-import { useSelector } from "react-redux";
+
+//styles
+import "./index.scss";
+//components
 import Cart from "../../molecules/Cart";
+import User from "../../molecules/User";
 import Love from "../../molecules/Love";
 import LogIn from "../Login";
-import "./index.scss";
 import logo from "../../../images/icons/logo.png";
-import LoginSuccess from "../../molecules/LoginSuccess";
+import firebase from "../../../service/firebase";
+
+
 const Layout = ({ children }) => {
-  const [show, setShow] = useState(false);
+  const [showMenuMobile, setShowMenuMobile] = useState(false);
   const [login, setLogin] = useState(false);
+
+  // state xử lý popup menu
   const [showCart, setShowCart] = useState(false);
   const [showLove, setShowLove] = useState(false);
-  const [showLoginSuccess, setShowLoginSuccess] = useState(false);
-  const user = useSelector((state) => state.user[0]);
+  const [showUser, setShowUser] = useState(false);
+
+  // gọi data redux cart
   const dataCart = useSelector((state) => state.cart);
-  // console.log(dataCart);
+
+  // gọi data login
+  const [userSucsecss, setUserSucsecss] = useState(null);
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      setUserSucsecss(user);
+    });
+  }, []);
+
+  // xử lý click
   const onClickCloseLove = () => {
     setShowLove(!showLove);
     setShowCart(false);
@@ -49,19 +68,19 @@ const Layout = ({ children }) => {
   };
 
   const handleUserClick = () => {
-    setLogin(true);
-    if (user) {
-      setShowLoginSuccess(!showLoginSuccess);
+    if (userSucsecss) {
+      setShowUser(!showUser);
+    } else {
+      setLogin(true);
     }
   };
-
 
   ///sticky
   const [sticky, setSticky] = useState(false);
   useEffect(() => {
     const scrollCallBack = window.addEventListener("scroll", () => {
       if (window.pageYOffset > 160) {
-        setSticky(true)
+        setSticky(true);
       } else {
         setSticky(false);
       }
@@ -74,14 +93,18 @@ const Layout = ({ children }) => {
     <>
       <div>
         <div className={`${sticky ? "d-block" : "d-none"} menuboi`}></div>
-        <Navbar bg="light" expanded={show} id="myHeader" className={`${sticky ? "sticky" : ""} myHeader`}>
+        <Navbar
+          bg="light"
+          expanded={showMenuMobile}
+          id="myHeader"
+          className={`${sticky ? "sticky" : ""} myHeader`}
+        >
           <div className="container">
-
             <div className="menu row">
               <div className="menuLeft  col-8 col-md-10  col-xl-9  ">
                 <button
                   className={`burger d-block d-md-none`}
-                  onClick={() => setShow(true)}
+                  onClick={() => showMenuMobile(true)}
                 >
                   <BiMenu style={{ fontSize: "30px" }} />
                 </button>
@@ -132,6 +155,13 @@ const Layout = ({ children }) => {
                 >
                   <BiUser style={{ fontSize: "20px" }} />
                 </Button>
+                {showUser && userSucsecss && (
+                  <User
+                    data={userSucsecss}
+                    ClickClose={() => setShowUser(false)}
+
+                  />
+                )}
                 <div className="positon-relative">
                   <Button
                     className="btnheart"
@@ -164,12 +194,17 @@ const Layout = ({ children }) => {
                       {dataCart.length - 1}
                     </Badge>
                   </Button>
-                  {showCart && <Cart ClickClose={() => setShowCart(false)} data={dataCart} />}
+                  {showCart && (
+                    <Cart
+                      ClickClose={() => setShowCart(false)}
+                      data={dataCart}
+                    />
+                  )}
                 </div>
               </div>
             </div>
           </div>
-          {show && (
+          {showMenuMobile && (
             <Navbar.Offcanvas
               id="offcanvasNavbar"
               aria-labelledby="offcanvasNavbarLabel"
@@ -181,8 +216,8 @@ const Layout = ({ children }) => {
                   <img width={100} src={logo} alt="logo" />
                 </Offcanvas.Title>
                 <button
-                  className={`burger ${show ? "toggle" : ""}`}
-                  onClick={() => setShow(false)}
+                  className={`burger ${showMenuMobile ? "toggle" : ""}`}
+                  onClick={() => showMenuMobile(false)}
                 >
                   <GrFormClose style={{ fontSize: "30px" }} />
                 </button>
@@ -267,14 +302,8 @@ const Layout = ({ children }) => {
         </Navbar>
         {children}
       </div>
-      <LogIn show={login} handleClose={() => setLogin(false)} />
-
-      {showLoginSuccess && (
-        <LoginSuccess
-          name={user.name}
-          src={user.imageUrl}
-          ClickClose={() => setShowLoginSuccess(false)}
-        />
+      {!userSucsecss && (
+        <LogIn show={login} handleClose={() => setLogin(false)} />
       )}
     </>
   );
