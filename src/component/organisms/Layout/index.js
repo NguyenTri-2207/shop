@@ -60,10 +60,10 @@ const Layout = ({ children }) => {
   // xử lý click
   const onClickCloseLove = () => {
     setShowLove(!showLove);
-    setShowCart(false);
+
   };
   const onClickCloseCart = () => {
-    setShowLove(false);
+
     setShowCart(!showCart);
   };
 

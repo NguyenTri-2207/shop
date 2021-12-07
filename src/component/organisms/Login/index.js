@@ -19,7 +19,7 @@ export default function LogIn({ handleClose, show, handleShow }) {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
-        className="modal"
+        centered
       >
         <div>
           <Button variant="tran" className="btn_close" onClick={handleClose}>
