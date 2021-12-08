@@ -4,6 +4,7 @@ import React, {
   useRef,
   useEffect,
   useCallback,
+  useContext,
 } from "react";
 import Select from "react-select";
 import CardHeader from "../../molecules/CardHeader";
@@ -13,6 +14,7 @@ import { addCart } from "../../../redux/action/cart";
 import { useDispatch } from "react-redux";
 import CardModal from "../../molecules/CardModal";
 import { dataMenu, dataSortPrice } from "./data.js";
+import { LoginContex } from "../../context";
 const reducer = (state, action) => {
   switch (action.type) {
     case "tab1":
@@ -50,6 +52,30 @@ const reducer = (state, action) => {
       return state;
   }
 };
+// custom select
+const customStyles = {
+  menu: (provided) => ({
+    ...provided,
+    width: "100%",
+    fontSize: "14px"
+  }),
+
+  control: () => ({
+    width: "100%",
+    display: "flex",
+    border: "1px solid #a1a1a1",
+    borderRadius: "4px",
+    fontSize: "14px",
+  }),
+
+  singleValue: (provided, state) => {
+    const opacity = state.isDisabled ? 0.5 : 1;
+    const transition = 'opacity 300ms';
+
+    return { ...provided, opacity, transition };
+  }
+}
+
 
 const MenuBot = () => {
   const [tab, dispatch] = useReducer(reducer, {
@@ -62,6 +88,10 @@ const MenuBot = () => {
   const [dataProduct, setDataProduct] = useState(tab.data);
   const [dataCard, setDataCard] = useState([]);
   const [dataCart, setDataCart] = useState({});
+
+  const { setLogin, userSucsecss } = useContext(LoginContex)
+
+  // click
   const handleLoadMore = () => {
     setLimit(limit + 4);
   };
@@ -72,9 +102,8 @@ const MenuBot = () => {
     setShowCard(true);
     setDataCard(item);
   };
-  const dataLength = tab.data.length;
 
-  // serch
+  // sort select
   useEffect(() => {
     setDataProduct(tab.data);
   }, [tab]);
@@ -93,39 +122,25 @@ const MenuBot = () => {
       );
     }
   };
-  const customStyles = {
-    menu: (provided) => ({
-      ...provided,
-      width: "100%",
-      fontSize: "14px"
-    }),
 
-    control: () => ({
-      width: "100%",
-      display: "flex",
-      border: "1px solid #a1a1a1",
-      borderRadius: "4px",
-      fontSize: "14px",
-    }),
+  // cart data card redux
 
-    singleValue: (provided, state) => {
-      const opacity = state.isDisabled ? 0.5 : 1;
-      const transition = 'opacity 300ms';
-
-      return { ...provided, opacity, transition };
-    }
-  }
-  // cart
   const dispatchCart = useDispatch();
-
-  const handleaddCard = (item) => {
-    setDataCart(item)
-  }
   useEffect(() => {
     const action = addCart(dataCart);
     dispatchCart(action);
   }, [dataCart, dispatchCart])
-  // console.log(dataCart)
+
+  // add card
+  const handleaddCard = (item) => {
+    if (userSucsecss) {
+      setDataCart(item)
+    } else {
+      setLogin(true);
+    }
+  }
+
+
   return (
     <div className="container">
       <div className="product">
@@ -186,13 +201,13 @@ const MenuBot = () => {
         </div>
         <div className="LoadMore my-4">
           <button
-            className={`${dataLength <= limit ? "d-none" : "d-block"}`}
+            className={`${tab.data.length <= limit ? "d-none" : "d-block"}`}
             onClick={handleLoadMore}
           >
             Load More
           </button>
           <button
-            className={`${dataLength <= limit && dataLength > 4 ? "d-block" : "d-none"
+            className={`${tab.data.length <= limit && tab.data.length > 4 ? "d-block" : "d-none"
               }`}
             onClick={handleSeeLess}
           >

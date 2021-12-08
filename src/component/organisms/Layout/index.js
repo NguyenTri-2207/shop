@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useSelector } from "react-redux";
 import {
   Navbar,
@@ -35,12 +35,13 @@ import Love from "../../molecules/Love";
 import LogIn from "../Login";
 import logo from "../../../images/icons/logo.png";
 import firebase from "../../../service/firebase";
+import { LoginContex } from "../../context";
 
 
 const Layout = ({ children }) => {
   const [showMenuMobile, setShowMenuMobile] = useState(false);
-  const [login, setLogin] = useState(false);
-
+  // const [] = useState(false);
+  const { login, setLogin, userSucsecss, setUserSucsecss } = useContext(LoginContex)
   // state xử lý popup menu
   const [showCart, setShowCart] = useState(false);
   const [showLove, setShowLove] = useState(false);
@@ -50,7 +51,7 @@ const Layout = ({ children }) => {
   const dataCart = useSelector((state) => state.cart);
 
   // gọi data login
-  const [userSucsecss, setUserSucsecss] = useState(null);
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUserSucsecss(user);
@@ -104,7 +105,7 @@ const Layout = ({ children }) => {
               <div className="menuLeft  col-8 col-md-10  col-xl-9  ">
                 <button
                   className={`burger d-block d-md-none`}
-                  onClick={() => showMenuMobile(true)}
+                  onClick={() => setShowMenuMobile(true)}
                 >
                   <BiMenu style={{ fontSize: "30px" }} />
                 </button>
@@ -217,7 +218,7 @@ const Layout = ({ children }) => {
                 </Offcanvas.Title>
                 <button
                   className={`burger ${showMenuMobile ? "toggle" : ""}`}
-                  onClick={() => showMenuMobile(false)}
+                  onClick={() => setShowMenuMobile(false)}
                 >
                   <GrFormClose style={{ fontSize: "30px" }} />
                 </button>
