@@ -1,9 +1,7 @@
 import React, {
   useReducer,
   useState,
-  useRef,
   useEffect,
-  useCallback,
   useContext,
 } from "react";
 import Select from "react-select";
@@ -211,7 +209,7 @@ const MenuBot = () => {
               }`}
             onClick={handleSeeLess}
           >
-            Thu GỌn
+            Thu Gọn
           </button>
         </div>
       </div>

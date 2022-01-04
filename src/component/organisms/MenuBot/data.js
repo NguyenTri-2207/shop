@@ -102,6 +102,172 @@ export const dataMenu = [
     {
         id: 2,
         tab: "tab2",
+        title: "IPad",
+        data: [
+            {
+                title: "iPhone 13 Pro Max",
+                src: iphone_13_1,
+                price: 33490000,
+                discount: "35000000",
+                des: "Thông số kĩ thuật  ",
+                id: 1,
+                start: 5,
+                priceDiscount: 5,
+                dataRam: ["128GB", "256GB", "512GB", "1T"],
+                dataImg: [
+                    {
+                        src: iphone_13_1,
+                    },
+                    {
+                        src: iphone_13_2,
+                    },
+                    {
+                        src: iphone_13_3,
+                    },
+                    {
+                        src: iphone_13_4,
+                    },
+                ],
+            },
+            {
+                title: "iPhone 13 128GB",
+                src: iphone_13_normal_1,
+                price: 23000000,
+                discount: "24000000",
+                des: "Thông số kĩ thuật  ",
+                id: 2,
+                start: 3,
+                dataRam: ["128GB", "256GB", "512GB"],
+                dataImg: [
+                    {
+                        src: iphone_13_normal_1,
+                    },
+                    {
+                        src: iphone_13_normal_2,
+                    },
+                    {
+                        src: iphone_13_normal_3,
+                    },
+                    {
+                        src: iphone_13_normal_4,
+                    },
+                ],
+            },
+            {
+                title: "Iphone 11",
+                src: "https://hoanghamobile.com/i/preview/Uploads/2020/11/06/apple-iphone-12-mini-3.png",
+                price: 1500,
+                discount: "1400",
+                des: "Thông số kĩ thuật  ",
+                id: 3,
+                start: 3,
+            },
+            {
+                title: "Iphone 10",
+                src: "https://hoanghamobile.com/i/preview/Uploads/2020/11/27/yellow.png",
+                price: 1500,
+                discount: "1400",
+                des: "Thông số kĩ thuật  ",
+                id: 4,
+                start: 1,
+            },
+            {
+                title: "Iphone 10",
+                src: "https://hoanghamobile.com/i/preview/Uploads/2020/11/27/yellow.png",
+                price: 150,
+                discount: "1400",
+                des: "Thông số kĩ thuật  ",
+                id: 5,
+                start: 5,
+            },
+            {
+                title: "Iphone 10",
+                src: "https://hoanghamobile.com/i/preview/Uploads/2020/11/27/yellow.png",
+                price: 1500,
+                discount: "1400",
+                des: "Thông số kĩ thuật  ",
+                id: 6,
+            },
+            {
+                title: "iPhone 13 Pro Max",
+                src: iphone_13_1,
+                price: 33490000,
+                discount: "35000000",
+                des: "Thông số kĩ thuật  ",
+                id: 1,
+                start: 5,
+                priceDiscount: 5,
+                dataRam: ["128GB", "256GB", "512GB", "1T"],
+                dataImg: [
+                    {
+                        src: iphone_13_1,
+                    },
+                    {
+                        src: iphone_13_2,
+                    },
+                    {
+                        src: iphone_13_3,
+                    },
+                    {
+                        src: iphone_13_4,
+                    },
+                ],
+            },
+            {
+                title: "iPhone 13 Pro Max",
+                src: iphone_13_1,
+                price: 33490000,
+                discount: "35000000",
+                des: "Thông số kĩ thuật  ",
+                id: 1,
+                start: 5,
+                priceDiscount: 5,
+                dataRam: ["128GB", "256GB", "512GB", "1T"],
+                dataImg: [
+                    {
+                        src: iphone_13_1,
+                    },
+                    {
+                        src: iphone_13_2,
+                    },
+                    {
+                        src: iphone_13_3,
+                    },
+                    {
+                        src: iphone_13_4,
+                    },
+                ],
+            },
+            {
+                title: "iPhone 13 Pro Max",
+                src: iphone_13_1,
+                price: 33490000,
+                discount: "35000000",
+                des: "Thông số kĩ thuật  ",
+                id: 1,
+                start: 5,
+                priceDiscount: 5,
+                dataRam: ["128GB", "256GB", "512GB", "1T"],
+                dataImg: [
+                    {
+                        src: iphone_13_1,
+                    },
+                    {
+                        src: iphone_13_2,
+                    },
+                    {
+                        src: iphone_13_3,
+                    },
+                    {
+                        src: iphone_13_4,
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        id: 3,
+        tab: "tab3",
         title: "Apple Watch",
         data: [
             {
@@ -147,8 +313,8 @@ export const dataMenu = [
         ],
     },
     {
-        id: 3,
-        tab: "tab3",
+        id: 4,
+        tab: "tab4",
         title: "MacBook",
         data: [
             {
@@ -194,8 +360,8 @@ export const dataMenu = [
         ],
     },
     {
-        id: 4,
-        tab: "tab4",
+        id: 5,
+        tab: "tab5",
         title: "Linh Kiện",
         data: [
             {
