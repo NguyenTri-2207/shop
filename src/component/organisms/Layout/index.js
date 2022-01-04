@@ -36,12 +36,13 @@ import LogIn from "../Login";
 import logo from "../../../images/icons/logo.png";
 import firebase from "../../../service/firebase";
 import { LoginContex } from "../../context";
-
+import { addDocument } from "../../../service/api";
 
 const Layout = ({ children }) => {
   const [showMenuMobile, setShowMenuMobile] = useState(false);
   // const [] = useState(false);
-  const { login, setLogin, userSucsecss, setUserSucsecss } = useContext(LoginContex)
+  const { login, setLogin, userSucsecss, setUserSucsecss } =
+    useContext(LoginContex);
   // state xử lý popup menu
   const [showCart, setShowCart] = useState(false);
   const [showLove, setShowLove] = useState(false);
@@ -55,16 +56,20 @@ const Layout = ({ children }) => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUserSucsecss(user);
+
+      if (user) {
+
+        addDocument("user", { name: "Tri" })
+      }
     });
+
   }, []);
 
   // xử lý click
   const onClickCloseLove = () => {
     setShowLove(!showLove);
-
   };
   const onClickCloseCart = () => {
-
     setShowCart(!showCart);
   };
 
@@ -120,7 +125,7 @@ const Layout = ({ children }) => {
 
                     <div className="menuLeft_titleDropdown">
                       <NavDropdown title="Sản Phẩm" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">
+                        <NavDropdown.Item href="/login">
                           Iphone
                         </NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.2">
@@ -160,7 +165,6 @@ const Layout = ({ children }) => {
                   <User
                     data={userSucsecss}
                     ClickClose={() => setShowUser(false)}
-
                   />
                 )}
                 <div className="positon-relative">
@@ -261,21 +265,21 @@ const Layout = ({ children }) => {
                   <h3>Follow us</h3>
                   <ul>
                     <li>
-                      <a href="#">
+                      <a href="/">
                         <i style={{ background: "#3b5998" }}>
                           <FaFacebookF />
                         </i>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="/">
                         <i style={{ background: "rgb(228 14 14)" }}>
                           <FaYoutube />
                         </i>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="/">
                         <i style={{ background: "rgb(58 57 105)" }}>
                           <AiFillGithub />
                         </i>
