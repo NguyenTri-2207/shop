@@ -29,6 +29,7 @@ import {
 //styles
 import "./index.scss";
 //components
+import Footer from '../Footer'
 import Cart from "../../molecules/Cart";
 import User from "../../molecules/User";
 import Love from "../../molecules/Love";
@@ -306,6 +307,7 @@ const Layout = ({ children }) => {
           )}
         </Navbar>
         {children}
+        <Footer />
       </div>
       {!userSucsecss && (
         <LogIn show={login} handleClose={() => setLogin(false)} />
