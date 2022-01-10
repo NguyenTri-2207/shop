@@ -29,7 +29,7 @@ import {
 //styles
 import "./index.scss";
 //components
-import Footer from '../Footer'
+import Footer from "../Footer";
 import Cart from "../../molecules/Cart";
 import User from "../../molecules/User";
 import Love from "../../molecules/Love";
@@ -38,6 +38,7 @@ import logo from "../../../images/icons/logo.png";
 import firebase from "../../../service/firebase";
 import { LoginContex } from "../../context";
 import { addDocument } from "../../../service/api";
+import { Link } from "react-router-dom";
 
 const Layout = ({ children }) => {
   const [showMenuMobile, setShowMenuMobile] = useState(false);
@@ -59,11 +60,9 @@ const Layout = ({ children }) => {
       setUserSucsecss(user);
 
       if (user) {
-
-        addDocument("user", { name: "Tri" })
+        addDocument("user", { name: "Tri" });
       }
     });
-
   }, []);
 
   // xử lý click
@@ -104,13 +103,13 @@ const Layout = ({ children }) => {
           bg="light"
           expanded={showMenuMobile}
           id="myHeader"
-          className={`${sticky ? "sticky" : ""} myHeader`}
+          className={`${sticky ? "sticky" : ""} myHeader p-0`}
         >
           <div className="container">
             <div className="menu row">
-              <div className="menuLeft  col-8 col-md-10  col-xl-9  ">
+              <div className="menuLeft  col-6 col-lg-10  col-xl-9  ">
                 <button
-                  className={`burger d-block d-md-none`}
+                  className={`burger d-block d-lg-none`}
                   onClick={() => setShowMenuMobile(true)}
                 >
                   <BiMenu style={{ fontSize: "30px" }} />
@@ -118,32 +117,32 @@ const Layout = ({ children }) => {
                 <a href="/" className="menuLeft_logo">
                   <img src={logo} alt="logo" /> <h1>TrisApple</h1>
                 </a>
-                <div className=" d-none d-md-block col-8 ">
+                <div className=" d-none d-lg-block col-8 ">
                   <div className=" d-flex">
-                    <a href="#action1" className="menuLeft_title">
+                    <Link to="/iphone" className="menuLeft_title">
                       Trang Chủ
-                    </a>
-
-                    <div className="menuLeft_titleDropdown">
-                      <NavDropdown title="Sản Phẩm" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="/login">
-                          Iphone
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">
-                          Apple Watch
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">
-                          MacBook
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">
-                          Linh Kiện
-                        </NavDropdown.Item>
-                      </NavDropdown>
+                    </Link>
+                    <div className="menuLeft_product">
+                      <div className="menuLeft_product-title">Sản Phẩm</div>
+                      <div className="menuLeft_product-item">
+                        <div>
+                          <Link to="/iphone">Iphone</Link>
+                        </div>
+                        <div>
+                          <Link to="/iphone">MacBook</Link>
+                        </div>
+                        <div>
+                          <Link to="/iphone">Ipad</Link>
+                        </div>
+                        <div>
+                          <Link to="/iphone">Apple Watch</Link>
+                        </div>
+                        <div>
+                          <Link to="/iphone">Linh Kiện</Link>
+                        </div>
+                      </div>
                       <FaChevronDown />
                     </div>
-                    {/* <a className="menuLeft_title" href="#action2">
-                      About Us
-                    </a> */}
                     <a className="menuLeft_title" href="#action2">
                       Bảo Hành
                     </a>
@@ -154,7 +153,7 @@ const Layout = ({ children }) => {
                 </div>
               </div>
 
-              <div className="menuRight col-4 col-md-2  col-xl-3">
+              <div className="menuRight col-6 col-lg-2  col-xl-3">
                 <Button
                   onClick={handleUserClick}
                   className="btnheart"

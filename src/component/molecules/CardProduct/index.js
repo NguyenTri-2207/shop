@@ -8,6 +8,7 @@ import {
 } from "react-icons/ai";
 import "./index.scss";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 const dataStart = [
   1,
   1,
@@ -40,7 +41,7 @@ const CardProduct = ({
       </div>
     )} */}
     <div className="cardpro_content">
-      <div className="cardpro_title">{title}</div>
+      <Link to="/iphone/iphone-13" className="cardpro_title">{title}</Link>
       <div className="cardpro_price">
         <div className="cardpro_price_New">
           {dollarUSLocale.format(price)}

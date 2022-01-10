@@ -1,5 +1,6 @@
 .myHeader {
-  padding: 8px 0;
+  // padding: 8px 0;
+  padding: 0;
   background: rgb(230, 222, 222);
   width: 100%;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -10,7 +11,8 @@
 .sticky {
   position: fixed !important;
   top: 0;
-  height: 50px;
+  // padding: 24px 0;
+  // height: 50px;
   z-index: 999;
 }
 .menu {
@@ -19,12 +21,14 @@
   padding: 0 15px;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: 991px) {
+    padding: 16px 0;
+  }
   .menuLeft {
     display: flex;
-
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
-    @media (max-width: 768px) {
+    @media (max-width: 991px) {
       justify-content: flex-start;
     }
     &_logo {
@@ -54,55 +58,40 @@
     }
     &_title {
       text-decoration: none;
-      padding: 0px 18px 4px;
+      padding: 24px 16px;
       display: inline-block;
       font-size: 18px;
       font-weight: 600;
       letter-spacing: 0.1px;
       color: #2c2c2c;
-      @media (max-width: 1200px) {
-        padding: 0px 8px 4px;
-        font-size: 16px;
-      }
       @media (max-width: 991px) {
         font-size: 15px;
       }
-    }
-    &_titleDropdown {
-      position: relative;
-      a {
-        position: relative;
-        z-index: 66;
-
-        padding: 0 25px 4px 15px;
-        font-size: 18px;
-        font-weight: 600;
-        letter-spacing: 0.1px;
-        color: #2c2c2c;
-        @media (max-width: 1200px) {
-          font-size: 16px;
-          padding: 0 25px 4px 8px;
-        }
-        @media (max-width: 991px) {
-          font-size: 15px;
-        }
-        &::after {
-          display: none;
-        }
+      &:hover {
+        color: #008b76;
       }
+    }
+    &_product {
+      position: relative;
       svg {
-        font-size: 11px;
+        font-size: 14px;
         position: absolute;
-        top: 8px;
-        right: 6px;
+        top: 32px;
+        right: -1px;
         z-index: 0;
       }
-      .dropdown-menu {
+
+      &-item {
+        opacity: 0;
+        visibility: hidden;
         width: 250px;
         margin-top: 12px;
-        padding: 0;
-        border: 0;
-
+        padding: 15px 0;
+        position: fixed;
+        top: 55px;
+        z-index: 9999;
+        background-color: #fff;
+        border-radius: 10px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
           0 6px 6px rgba(0, 0, 0, 0.23);
         &::after {
@@ -116,13 +105,34 @@
           border-bottom: 15px solid white;
         }
         a {
-          padding: 16px;
+          text-decoration: none;
+          padding: 0px 18px 8px;
+          display: inline-block;
           font-size: 16px;
+          font-weight: 500;
           letter-spacing: 0.1px;
           color: #2c2c2c;
-          &::after {
-            display: none;
+          &:hover {
+            color: #008b76;
           }
+        }
+        &:hover {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+      &-title {
+        text-decoration: none;
+        padding: 24px 20px 24px 16px;
+        display: inline-block;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.1px;
+        color: #2c2c2c;
+        cursor: pointer;
+        &:hover + .menuLeft_product-item {
+          opacity: 1;
+          visibility: visible;
         }
       }
     }
@@ -147,7 +157,7 @@
 .burger {
   outline: 0;
   border: 0;
-  margin-top: 8px;
+  // margin-top: 8px;
   padding: 0 8px 0 0;
   background: transparent;
   &:hover {
