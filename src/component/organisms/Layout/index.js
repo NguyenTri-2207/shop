@@ -114,12 +114,12 @@ const Layout = ({ children }) => {
                 >
                   <BiMenu style={{ fontSize: "30px" }} />
                 </button>
-                <a href="/" className="menuLeft_logo">
+                <Link to="/" className="menuLeft_logo">
                   <img src={logo} alt="logo" /> <h1>TrisApple</h1>
-                </a>
+                </Link>
                 <div className=" d-none d-lg-block col-8 ">
                   <div className=" d-flex">
-                    <Link to="/iphone" className="menuLeft_title">
+                    <Link to="/" className="menuLeft_title">
                       Trang Chủ
                     </Link>
                     <div className="menuLeft_product">

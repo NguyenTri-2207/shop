@@ -11,7 +11,7 @@ import "./index.scss";
 import { addCart } from "../../../redux/action/cart";
 import { useDispatch } from "react-redux";
 import CardModal from "../../molecules/CardModal";
-import { dataMenu, dataSortPrice } from "./data.js";
+import { dataMenu, dataSortname, dataSortPrice } from "./data.js";
 import { LoginContex } from "../../context";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -106,21 +106,51 @@ const MenuBot = () => {
     setDataProduct(tab.data);
   }, [tab]);
 
-  const getDataPriceSort = (value) => {
+
+  const getDataPriceSegment = (value) => {
     const data = tab.data;
     if (value.value === 1) {
       setDataProduct(data);
     } else if (value.value === 2) {
       setDataProduct(() =>
-        data.slice(0).sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
+        // console.log(data)
+        // data.slice(0).sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
+        data.slice(0).filter(item => item.price < 10000000)
       );
     } else if (value.value === 3) {
       setDataProduct(
-        data.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
+        data.slice(0).filter(item => item.price > 10000000 && item.price < 15000000)
+      );
+    } else if (value.value === 4) {
+      setDataProduct(
+        data.slice(0).filter(item => item.price > 15000000 && item.price < 20000000)
+      );
+    } else if (value.value === 5) {
+      setDataProduct(
+        data.slice(0).filter(item => item.price > 20000000 && item.price < 25000000)
+      );
+    } else if (value.value === 6) {
+      setDataProduct(
+        data.slice(0).filter(item => item.price > 25000000)
       );
     }
   };
 
+
+  const getDataPriceSort = (value) => {
+    // const data = dataProduct;
+    if (value.value === 1) {
+      setDataProduct(dataProduct);
+    } else if (value.value === 2) {
+      setDataProduct(() =>
+        dataProduct.slice(0).sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
+      );
+    } else if (value.value === 3) {
+      setDataProduct(
+        dataProduct.slice(0).sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
+      );
+    }
+  };
   // cart data card redux
 
   const dispatchCart = useDispatch();
@@ -167,14 +197,49 @@ const MenuBot = () => {
         </div>
         {/* Sort product */}
         <div className="sort ">
-          <Select
-            className="col-10 col-md-4"
-            defaultValue={dataSortPrice[0]}
-            options={dataSortPrice}
-            components={{ IndicatorSeparator: () => null }}
-            onChange={getDataPriceSort}
-            styles={customStyles}
-          />
+          <div className="col-8">
+            <div className="d-flex">
+              <Select
+                className="col"
+                defaultValue={{ label: "Mức giá", value: 0 }}
+                options={dataSortname}
+                components={{ IndicatorSeparator: () => null }}
+                onChange={getDataPriceSegment}
+                styles={customStyles}
+              />
+
+              <Select
+                className="col"
+                defaultValue={{ label: "Ram", value: 0 }}
+                options={dataSortPrice}
+                components={{ IndicatorSeparator: () => null }}
+                onChange={getDataPriceSort}
+                styles={customStyles}
+              />
+              <Select
+                className="col"
+                defaultValue={{ label: "Bộ nhớ trong", value: 0 }}
+                options={dataSortPrice}
+                components={{ IndicatorSeparator: () => null }}
+                onChange={getDataPriceSort}
+                styles={customStyles}
+              />
+
+            </div>
+
+          </div>
+          <div className="col-4">
+            <Select
+              className="col-10 col-md-4"
+              defaultValue={{ label: "Sắp xếp theo giá", value: 0 }}
+              options={dataSortPrice}
+              components={{ IndicatorSeparator: () => null }}
+              onChange={getDataPriceSort}
+              styles={customStyles}
+            />
+          </div>
+
+
         </div>
         <div className="row">
           {dataProduct &&

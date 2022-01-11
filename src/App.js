@@ -7,6 +7,7 @@ import Contact from "./component/Tempalate/Contact";
 import "./App.scss";
 import { LoginContex } from "./component/context";
 import Iphone from "./component/Tempalate/Iphone";
+import SliderProduct from './component/organisms/SliderProduct'
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -22,6 +23,7 @@ function App() {
             element={
               <>
                 <Banner />
+                <SliderProduct />
                 <MenuBot />
               </>
             }

@@ -25,11 +25,12 @@ const CardProduct = ({
   discount,
   onClick,
   priceDiscount,
+  className,
   onClickaddCard,
   onClicSee,
   start
 }) => (
-  <div className="cardpro">
+  <div className={`cardpro ${className ? className : ""}`}>
     <div className="cardpro_installment">Trả góp 0%</div>
     <img className="cardpro_photo" src={img} alt={title} />
     {/* {priceDiscount && (
