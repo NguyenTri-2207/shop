@@ -6,15 +6,48 @@ import "./index.scss";
 import { dataMenu } from "../MenuBot/data";
 import CardProduct from "../../molecules/CardProduct";
 import { IoIosFlash } from "react-icons/io";
+
+var settings = {
+  dots: false,
+  infinite: true,
+  speed: 800,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  autoplay: true,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
 function secondsToHms(d) {
   d = Number(d);
   var h = Math.floor(d / 3600);
   var m = Math.floor((d % 3600) / 60);
   var s = Math.floor((d % 3600) % 60);
 
-  var hDisplay = h > 10 ? h : `0${h}`;
-  var mDisplay = m > 10 ? m : `0${m}`;
-  var sDisplay = s > 10 ? s : `0${s}`;
+  var hDisplay = h > 9 ? h : `0${h}`;
+  var mDisplay = m > 9 ? m : `0${m}`;
+  var sDisplay = s > 9 ? s : `0${s}`;
   return hDisplay + ":" + mDisplay + ":" + sDisplay;
 }
 const Timer = (props) => {
@@ -32,45 +65,12 @@ const Timer = (props) => {
     };
   });
   return (
-    < div >
+    <div>
       <p className="m-0 ms-2">{time ? secondsToHms(time) : "..."}</p>
-    </ div >
+    </div>
   );
 };
 const SliderProduct = () => {
-  var settings = {
-    dots: false,
-    infinite: true,
-    speed: 800,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-
-      }
-    ]
-  };
   return (
     <div className="container">
       <div className="saleOnline">
@@ -82,12 +82,13 @@ const SliderProduct = () => {
         </div>
         <h4 className="saleOnline_time">
           {" "}
-          <span>F</span><IoIosFlash /><span>ASH SALE ONLINE:</span> <Timer />
+          <span>F</span>
+          <IoIosFlash />
+          <span>ASH SALE ONLINE:</span> <Timer />
         </h4>
         <Slider {...settings} className="saleOnline_slider">
           {dataMenu &&
             dataMenu[0]?.data.map((item) => (
-
               <CardProduct
                 className="saleOnline_card"
                 key={item.id}
@@ -102,11 +103,10 @@ const SliderProduct = () => {
                 // onClickaddCard={() => handleaddCard(item)}
                 cardSale={true}
               />
-
             ))}
         </Slider>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 };
 export default SliderProduct;

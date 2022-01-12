@@ -1,8 +1,12 @@
 .saleOnline {
   width: 100%;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
+  // border: 1px solid #d1d5db;
+  border-radius: 18px;
   padding: 0 0 24px 0;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background-image: url(https://wallpaper.dog/large/11032562.jpg);
+  background-size: cover;
+  overflow-x: hidden;
   .slick-prev {
     left: 1px;
     z-index: 1;
@@ -10,26 +14,28 @@
   }
   .slick-prev:before {
     font-size: 35px;
-    color: rgb(0, 0, 0);
+    color: rgb(87, 85, 85);
     right: 10px;
   }
   .slick-next {
-    right: 10px;
+    right: 18px;
   }
   .slick-next:before {
     font-size: 35px;
-    color: rgb(0, 0, 0);
+    color: rgb(112, 109, 109);
     right: 10px;
   }
   &_header {
     img {
       width: 100%;
+      border-radius: 16px 16px 0 0;
     }
   }
   &_time {
     padding: 16px 24px;
     display: flex;
     align-items: center;
+    font-weight: 700;
     svg {
       font-size: 24px;
       color: #fbda00;
@@ -37,7 +43,7 @@
     }
   }
   &_slider {
-    padding: 0 15px;
+    padding: 0 40px;
   }
   &_card {
     box-shadow: none;

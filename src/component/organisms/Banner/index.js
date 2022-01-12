@@ -16,20 +16,17 @@ const Banner = () => {
     <div className="container">
       <div className="banner">
         <div className="row">
-          <div className="col-xl-9 col-12">
+          <div className="col-xl-9 col-12" style={{ borderRadius: "24px" }}>
             <Slider {...settings} className="banner_slider  ">
-              <div className="SliderImg">
-                <img
-                  alt="banner"
-                  src="https://cdn.tgdd.vn/2021/12/banner/tet-samsung-830-300-830x300.png"
-                />
-              </div>
-              <div className="SliderImg">
-                <img
-                  alt="banner"
-                  src="https://cdn.tgdd.vn/2022/01/banner/830-300-830x300-4.png"
-                />
-              </div>
+              <img
+                alt="banner"
+                src="https://cdn.tgdd.vn/2021/12/banner/tet-samsung-830-300-830x300.png"
+              />
+
+              <img
+                alt="banner"
+                src="https://cdn.tgdd.vn/2022/01/banner/830-300-830x300-4.png"
+              />
             </Slider>
           </div>
           <div className="col-xl-3 d-xl-block d-none">

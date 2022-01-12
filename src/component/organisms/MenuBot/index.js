@@ -1,9 +1,4 @@
-import React, {
-  useReducer,
-  useState,
-  useEffect,
-  useContext,
-} from "react";
+import React, { useReducer, useState, useEffect, useContext } from "react";
 import Select from "react-select";
 import CardHeader from "../../molecules/CardHeader";
 import CardProduct from "../../molecules/CardProduct";
@@ -55,7 +50,7 @@ const customStyles = {
   menu: (provided) => ({
     ...provided,
     width: "100%",
-    fontSize: "14px"
+    fontSize: "14px",
   }),
 
   control: () => ({
@@ -68,12 +63,11 @@ const customStyles = {
 
   singleValue: (provided, state) => {
     const opacity = state.isDisabled ? 0.5 : 1;
-    const transition = 'opacity 300ms';
+    const transition = "opacity 300ms";
 
     return { ...provided, opacity, transition };
-  }
-}
-
+  },
+};
 
 const MenuBot = () => {
   const [tab, dispatch] = useReducer(reducer, {
@@ -87,7 +81,7 @@ const MenuBot = () => {
   const [dataCard, setDataCard] = useState([]);
   const [dataCart, setDataCart] = useState({});
 
-  const { setLogin, userSucsecss } = useContext(LoginContex)
+  const { setLogin, userSucsecss } = useContext(LoginContex);
 
   // click
   const handleLoadMore = () => {
@@ -106,7 +100,6 @@ const MenuBot = () => {
     setDataProduct(tab.data);
   }, [tab]);
 
-
   const getDataPriceSegment = (value) => {
     const data = tab.data;
     if (value.value === 1) {
@@ -115,27 +108,30 @@ const MenuBot = () => {
       setDataProduct(() =>
         // console.log(data)
         // data.slice(0).sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
-        data.slice(0).filter(item => item.price < 10000000)
+        data.slice(0).filter((item) => item.price < 10000000)
       );
     } else if (value.value === 3) {
       setDataProduct(
-        data.slice(0).filter(item => item.price > 10000000 && item.price < 15000000)
+        data
+          .slice(0)
+          .filter((item) => item.price > 10000000 && item.price < 15000000)
       );
     } else if (value.value === 4) {
       setDataProduct(
-        data.slice(0).filter(item => item.price > 15000000 && item.price < 20000000)
+        data
+          .slice(0)
+          .filter((item) => item.price > 15000000 && item.price < 20000000)
       );
     } else if (value.value === 5) {
       setDataProduct(
-        data.slice(0).filter(item => item.price > 20000000 && item.price < 25000000)
+        data
+          .slice(0)
+          .filter((item) => item.price > 20000000 && item.price < 25000000)
       );
     } else if (value.value === 6) {
-      setDataProduct(
-        data.slice(0).filter(item => item.price > 25000000)
-      );
+      setDataProduct(data.slice(0).filter((item) => item.price > 25000000));
     }
   };
-
 
   const getDataPriceSort = (value) => {
     // const data = dataProduct;
@@ -143,11 +139,15 @@ const MenuBot = () => {
       setDataProduct(dataProduct);
     } else if (value.value === 2) {
       setDataProduct(() =>
-        dataProduct.slice(0).sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
+        dataProduct
+          .slice(0)
+          .sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
       );
     } else if (value.value === 3) {
       setDataProduct(
-        dataProduct.slice(0).sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
+        dataProduct
+          .slice(0)
+          .sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
       );
     }
   };
@@ -157,50 +157,53 @@ const MenuBot = () => {
   useEffect(() => {
     const action = addCart(dataCart);
     dispatchCart(action);
-  }, [dataCart, dispatchCart])
+  }, [dataCart, dispatchCart]);
 
   // add card
   const handleaddCard = (item) => {
     if (userSucsecss) {
-      setDataCart(item)
+      setDataCart(item);
     } else {
       setLogin(true);
     }
-  }
-
-
+  };
   return (
     <div className="container">
       <div className="product">
         {/*  menu product */}
         <div className="product_menu">
-          {dataMenu.map((item) => {
-            return (
-              <CardHeader
-                styless={
-                  tab.id === item.id
-                    ? {
-                      background:
-                        "transparent linear-gradient(90deg, #009981 0%, #00483d 100%) 0% 0% no-repeat",
-                      color: "#fff",
-                    }
-                    : {}
-                }
-                onClick={() =>
-                  dispatch({ type: `${item.tab}`, data: item.data })
-                }
-                key={item.id}
-                title={item.title}
-              />
-            );
-          })}
+          <div className="col-4">
+            <h4>SẢN PHẨM NỔI BẬT NHẤT</h4>
+          </div>
+          <div className="col-8 product_menu-left">
+            {dataMenu.map((item) => {
+              return (
+                <CardHeader
+                  styless={
+                    tab.id === item.id
+                      ? {
+                          background:
+                            "transparent linear-gradient(90deg, #009981 0%, #00483d 100%) 0% 0% no-repeat",
+                          color: "#fff",
+                        }
+                      : {}
+                  }
+                  onClick={() =>
+                    dispatch({ type: `${item.tab}`, data: item.data })
+                  }
+                  key={item.id}
+                  title={item.title}
+                />
+              );
+            })}
+          </div>
         </div>
         {/* Sort product */}
-        <div className="sort ">
-          <div className="col-8">
+        <div className="product_sort">
+          <div className="col-10">
             <div className="d-flex">
               <Select
-                className="col"
+                className="pe-2 col-3"
                 defaultValue={{ label: "Mức giá", value: 0 }}
                 options={dataSortname}
                 components={{ IndicatorSeparator: () => null }}
@@ -209,7 +212,7 @@ const MenuBot = () => {
               />
 
               <Select
-                className="col"
+                className="px-2 col-2"
                 defaultValue={{ label: "Ram", value: 0 }}
                 options={dataSortPrice}
                 components={{ IndicatorSeparator: () => null }}
@@ -217,20 +220,18 @@ const MenuBot = () => {
                 styles={customStyles}
               />
               <Select
-                className="col"
+                className="ps-2 col-2"
                 defaultValue={{ label: "Bộ nhớ trong", value: 0 }}
                 options={dataSortPrice}
                 components={{ IndicatorSeparator: () => null }}
                 onChange={getDataPriceSort}
                 styles={customStyles}
               />
-
             </div>
-
           </div>
-          <div className="col-4">
+          <div className="col-2">
             <Select
-              className="col-10 col-md-4"
+              className="col"
               defaultValue={{ label: "Sắp xếp theo giá", value: 0 }}
               options={dataSortPrice}
               components={{ IndicatorSeparator: () => null }}
@@ -238,14 +239,12 @@ const MenuBot = () => {
               styles={customStyles}
             />
           </div>
-
-
         </div>
-        <div className="row">
+        <div className="product_list">
           {dataProduct &&
             dataProduct.slice(0, limit).map((item) => (
               <div
-                className="col-12 col-md-6 col-lg-4 col-xl-3 mt-2 mt-md-4"
+                className="col-12 col-md-6 col-lg-4 col-xl-3 mt-2 mt-md-4 "
                 key={item.id}
               >
                 <CardProduct
@@ -262,20 +261,28 @@ const MenuBot = () => {
               </div>
             ))}
         </div>
+
         <div className="LoadMore my-4">
-          <button
-            className={`${tab.data.length <= limit ? "d-none" : "d-block"}`}
-            onClick={handleLoadMore}
-          >
-            Load More
-          </button>
-          <button
-            className={`${tab.data.length <= limit && tab.data.length > 4 ? "d-block" : "d-none"
+          {dataProduct.length > 4 && (
+            <button
+              className={`${tab.data.length <= limit ? "d-none" : "d-block"}`}
+              onClick={handleLoadMore}
+            >
+              Xem thêm
+            </button>
+          )}
+          {dataProduct.length > 4 && (
+            <button
+              className={`${
+                tab.data.length <= limit && tab.data.length > 4
+                  ? "d-block"
+                  : "d-none"
               }`}
-            onClick={handleSeeLess}
-          >
-            Thu Gọn
-          </button>
+              onClick={handleSeeLess}
+            >
+              Thu Gọn
+            </button>
+          )}
         </div>
       </div>
       <CardModal
