@@ -21,6 +21,33 @@
     text-align: center;
     padding: 3px 10px;
   }
+  &_discount {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 3px 10px;
+    vertical-align: middle;
+    color: #fff;
+    font-weight: 600;
+    background: #f51212;
+    border-radius: 3px;
+    padding: 4px 8px;
+    height: 24px;
+    &::before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px 10px 0 0;
+      border-color: #f00 transparent transparent transparent;
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+    }
+  }
   &_title {
     text-decoration: none;
     padding-left: 10px;

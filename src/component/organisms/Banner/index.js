@@ -3,14 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./index.scss";
-import { AiOutlineSearch } from 'react-icons/ai'
-const SliderImg = ({ src }) => {
-  return (
-    <div className="SliderImg">
-      <img alt="banner" src={src} />
-    </div>
-  );
-};
+
 const Banner = () => {
   var settings = {
     dots: false,
@@ -21,26 +14,41 @@ const Banner = () => {
   };
   return (
     <div className="container">
-      <div className="search">
-        <div className="search_icon">
-          <AiOutlineSearch />
+      <div className="banner">
+        <div className="row">
+          <div className="col-xl-9 col-12">
+            <Slider {...settings} className="banner_slider  ">
+              <div className="SliderImg">
+                <img
+                  alt="banner"
+                  src="https://cdn.tgdd.vn/2021/12/banner/tet-samsung-830-300-830x300.png"
+                />
+              </div>
+              <div className="SliderImg">
+                <img
+                  alt="banner"
+                  src="https://cdn.tgdd.vn/2022/01/banner/830-300-830x300-4.png"
+                />
+              </div>
+            </Slider>
+          </div>
+          <div className="col-xl-3 d-xl-block d-none">
+            <div className="banner_left">
+              <img
+                className="ImgBanner"
+                alt="banner"
+                src="https://cdn.hoanghamobile.com/i/home/Uploads/2022/01/05/san-pham-hot-ip-13.png"
+              />
+              <p className="m-0 banner_left-title">NHIỀU KHUYẾN MÃI HOT</p>
+              <img
+                className="ImgBanner"
+                alt="banner"
+                src="https://cdn.hoanghamobile.com/i/home/Uploads/2022/01/07/san-pham-hot-reno6.png"
+              />
+            </div>
+          </div>
         </div>
-
-        <input
-          type="text"
-          name="q"
-          id="search"
-          className="cps-input cta-search"
-          placeholder="Bạn cần tìm gì?"
-          maxlength="128"
-          autocomplete="off"
-        />
       </div>
-      <Slider {...settings} className="banner_slider">
-        <SliderImg src="https://images.fpt.shop/unsafe/fit-in/800x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/12/3/637741411837311205_F-H1_800x300%20(1).png" />
-        <SliderImg src="https://images.fpt.shop/unsafe/fit-in/800x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/11/30/637739082837263999_pk%20my.png" />
-        {/* <SliderImg src="" /> */}
-      </Slider>
     </div>
   );
 };
