@@ -71,6 +71,14 @@ const Timer = (props) => {
   );
 };
 const SliderProduct = () => {
+  // const [data, setData] = useState([]);
+  const results = [];
+  dataMenu
+    .map((item) => item.data)
+    .map((item) =>
+      item.filter((i) => i && i.priceDiscount > 14 && results.push(i))
+    );
+  console.log(results);
   return (
     <div className="container">
       <div className="saleOnline">
@@ -87,8 +95,8 @@ const SliderProduct = () => {
           <span>ASH SALE ONLINE:</span> <Timer />
         </h4>
         <Slider {...settings} className="saleOnline_slider">
-          {dataMenu &&
-            dataMenu[0]?.data.map((item) => (
+          {results &&
+            results.map((item) => (
               <CardProduct
                 className="saleOnline_card"
                 key={item.id}
@@ -98,9 +106,7 @@ const SliderProduct = () => {
                 des={item.des}
                 discount={item.discount}
                 priceDiscount={item.priceDiscount}
-                // onClicSee={() => HandleClickSee(item)}
                 start={item.start}
-                // onClickaddCard={() => handleaddCard(item)}
                 cardSale={true}
               />
             ))}

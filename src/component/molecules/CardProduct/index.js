@@ -28,7 +28,7 @@ const CardProduct = ({
   <div className={`cardpro ${className ? className : ""}`}>
     <div className="cardpro_installment">Trả góp 0%</div>
     <img className="cardpro_photo" src={img} alt={title} />
-    {priceDiscount && <div className="cardpro_discount">{priceDiscount}%</div>}
+    {priceDiscount && <div className="cardpro_discount">-{priceDiscount}%</div>}
     <div className="cardpro_content">
       <Link to="/iphone/iphone-13" className="cardpro_title">
         {title}
