@@ -172,10 +172,10 @@ const MenuBot = () => {
       <div className="product">
         {/*  menu product */}
         <div className="product_menu">
-          <div className="col-4">
+          <div className="col-12 col-md-4">
             <h4>SẢN PHẨM NỔI BẬT NHẤT</h4>
           </div>
-          <div className="col-8 product_menu-left">
+          <div className="col-12 col-md-8 product_menu-left">
             {dataMenu.map((item) => {
               return (
                 <CardHeader
@@ -200,10 +200,10 @@ const MenuBot = () => {
         </div>
         {/* Sort product */}
         <div className="product_sort">
-          <div className="col-10">
+          <div className="col-7">
             <div className="d-flex">
               <Select
-                className="pe-2 col-3"
+                className="pe-2 col-8 col-md-4"
                 defaultValue={{ label: "Mức giá", value: 0 }}
                 options={dataSortname}
                 components={{ IndicatorSeparator: () => null }}
@@ -211,7 +211,7 @@ const MenuBot = () => {
                 styles={customStyles}
               />
 
-              <Select
+              {/* <Select
                 className="px-2 col-2"
                 defaultValue={{ label: "Ram", value: 0 }}
                 options={dataSortPrice}
@@ -226,10 +226,10 @@ const MenuBot = () => {
                 components={{ IndicatorSeparator: () => null }}
                 onChange={getDataPriceSort}
                 styles={customStyles}
-              />
+              /> */}
             </div>
           </div>
-          <div className="col-2">
+          <div className="col-5 col-md-2">
             <Select
               className="col"
               defaultValue={{ label: "Sắp xếp theo giá", value: 0 }}
