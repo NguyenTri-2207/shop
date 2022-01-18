@@ -7,6 +7,7 @@ import Contact from "./component/Tempalate/Contact";
 import "./App.scss";
 import { LoginContex } from "./component/context";
 import Iphone from "./component/Tempalate/Iphone";
+import Payment from "./component/Tempalate/payment";
 import SliderProduct from "./component/organisms/SliderProduct";
 import Product from "./component/organisms/Product";
 
@@ -36,6 +37,7 @@ function App() {
             <Route path="sent" element={<div>10dff dfdfdff</div>} />
           </Route> */}
           <Route path="iphone" element={<Iphone />} />
+          <Route path="thanh-toan" element={<Payment />} />
         </Routes>
       </Layout>
     </LoginContex.Provider>

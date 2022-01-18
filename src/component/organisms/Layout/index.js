@@ -53,15 +53,12 @@ const Layout = ({ children }) => {
   // gọi data redux cart
   const dataCart = useSelector((state) => state.cart);
 
+  console.log(dataCart);
   // gọi data login
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUserSucsecss(user);
-
-      if (user) {
-        addDocument("user", { name: "Tri" });
-      }
     });
   }, []);
 
