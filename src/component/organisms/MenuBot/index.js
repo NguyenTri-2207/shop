@@ -176,7 +176,7 @@ const MenuBot = () => {
             <h4>SẢN PHẨM NỔI BẬT NHẤT</h4>
           </div>
           <div className="col-12 col-md-8 product_menu-left">
-            {dataMenu.map((item) => {
+            {dataMenu.map((item, index) => {
               return (
                 <CardHeader
                   styless={
@@ -191,7 +191,7 @@ const MenuBot = () => {
                   onClick={() =>
                     dispatch({ type: `${item.tab}`, data: item.data })
                   }
-                  key={item.id}
+                  key={index}
                   title={item.title}
                 />
               );
@@ -245,7 +245,7 @@ const MenuBot = () => {
             dataProduct.slice(0, limit).map((item) => (
               <div
                 className="col-12 col-md-6 col-lg-4 col-xl-3 mt-2 mt-md-4 "
-                key={item.id}
+                // key={item.id}
               >
                 <CardProduct
                   img={item.src}

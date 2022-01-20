@@ -6,7 +6,6 @@ import {
   Offcanvas,
   Nav,
   Accordion,
-  NavDropdown,
   Button,
 } from "react-bootstrap";
 
@@ -37,7 +36,6 @@ import LogIn from "../Login";
 import logo from "../../../images/icons/logo.png";
 import firebase from "../../../service/firebase";
 import { LoginContex } from "../../context";
-import { addDocument } from "../../../service/api";
 import { Link } from "react-router-dom";
 
 const Layout = ({ children }) => {
@@ -49,13 +47,20 @@ const Layout = ({ children }) => {
   const [showCart, setShowCart] = useState(false);
   const [showLove, setShowLove] = useState(false);
   const [showUser, setShowUser] = useState(false);
-
+  const [dataTest, setDataTest] = useState("");
   // gọi data redux cart
   const dataCart = useSelector((state) => state.cart);
 
-  console.log(dataCart);
+  // console.log(dataCart);
   // gọi data login
 
+  useEffect(() => {
+    fetch(`/api/greeting`)
+      .then((response) => response.json())
+      // 4. Setting *dogImage* to the image url that we received from the response above
+      .then((data) => setDataTest(data));
+  }, []);
+  console.log(dataTest);
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUserSucsecss(user);

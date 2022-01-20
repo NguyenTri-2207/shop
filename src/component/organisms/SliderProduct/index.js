@@ -78,7 +78,7 @@ const SliderProduct = () => {
     .map((item) =>
       item.filter((i) => i && i.priceDiscount > 14 && results.push(i))
     );
-  console.log(results);
+  // console.log(results);
   return (
     <div className="container">
       <div className="saleOnline">
@@ -96,10 +96,10 @@ const SliderProduct = () => {
         </h4>
         <Slider {...settings} className="saleOnline_slider">
           {results &&
-            results.map((item) => (
+            results.map((item, index) => (
               <CardProduct
                 className="saleOnline_card"
-                key={item.id}
+                key={index}
                 img={item.src}
                 title={item.title}
                 price={item.price}

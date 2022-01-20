@@ -111,7 +111,9 @@ export default function CartModal(props) {
             <h3> {dollarUSLocale.format(price)}đ</h3>
             <div className="evaluate">
               {dataStart.slice(0, props.start).map((index, item) => {
-                return <AiFillStar className="cardpro_evaluate_star" />;
+                return (
+                  <AiFillStar key={index} className="cardpro_evaluate_star" />
+                );
               })}
             </div>
             <div>
@@ -119,15 +121,18 @@ export default function CartModal(props) {
                 props.dataRam.map((item, index) => {
                   return (
                     <button
+                      key={index}
                       onClick={() => handleRam(index)}
-                      className={`CartModal_Ram ${index === activeRam ? "activeRam" : ""
-                        }`}
+                      className={`CartModal_Ram ${
+                        index === activeRam ? "activeRam" : ""
+                      }`}
                     >
                       <span>{item}</span>
                       <img
                         alt="img"
-                        className={`CartModal_RamImg ${index === activeRam ? "d-block" : "d-none"
-                          }`}
+                        className={`CartModal_RamImg ${
+                          index === activeRam ? "d-block" : "d-none"
+                        }`}
                         src="https://frontend.tikicdn.com/_desktop-next/static/img/pdp_revamp_v2/selected-variant-indicator.svg"
                       />
                     </button>
@@ -138,10 +143,12 @@ export default function CartModal(props) {
               {dataColor.map((item, index) => {
                 return (
                   <button
+                    key={index}
                     style={{ background: item }}
                     onClick={() => handleColor(index)}
-                    className={`CartModal_color ${index === activeColor ? "activeColor" : ""
-                      }`}
+                    className={`CartModal_color ${
+                      index === activeColor ? "activeColor" : ""
+                    }`}
                   ></button>
                 );
               })}

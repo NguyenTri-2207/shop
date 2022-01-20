@@ -39,7 +39,7 @@ export default function Cart({ ClickClose, deleteProduct, data }) {
             {data &&
               data.slice(1).map((item, index) => {
                 return (
-                  <div className="">
+                  <div className="" key={index}>
                     <div className="content_product">
                       <div className="cart_single d-flex align-items-center">
                         <div className="me-2 content_img">

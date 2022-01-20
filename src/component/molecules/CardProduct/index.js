@@ -54,10 +54,10 @@ const CardProduct = ({
       </div>
       <div className="cardpro_evaluate">
         {dataStart.slice(0, start).map((index, item) => {
-          return <AiFillStar className="cardpro_evaluate_star" />;
+          return <AiFillStar key={index} className="cardpro_evaluate_star" />;
         })}
         {dataStart.slice(0, 5 - start).map((index, item) => {
-          return <AiFillStar style={{ color: "#8e9195" }} />;
+          return <AiFillStar key={index} style={{ color: "#8e9195" }} />;
         })}
       </div>
       {cardSale ? (
