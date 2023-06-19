@@ -15,7 +15,7 @@ export default function ListCartPayMent({ data, totalPrice }) {
   return (
     <div className="">
       <div className="d-flex justify-content-between">
-        <h3 className="mb-3 flex">Danh sách đơn hàng</h3>{" "}
+        <h3 className="mb-3 flex">Danh sách đơn hàng</h3>
       </div>
       <div className="contents">
         {data.length > 0 ? (

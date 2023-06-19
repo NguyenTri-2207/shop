@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import CardModal from "../../molecules/CardModal";
 import { dataMenu, dataSortname, dataSortPrice } from "./data.js";
 import { LoginContex } from "../../context";
+import { addFavorite } from "../../../redux/action/favorite";
 const reducer = (state, action) => {
   switch (action.type) {
     case "tab1":
@@ -71,6 +72,7 @@ const customStyles = {
 
 const MenuBot = () => {
   const dispatchCart = useDispatch();
+  const dispatchLove = useDispatch();
   const [tab, dispatch] = useReducer(reducer, {
     id: 1,
     data: dataMenu[0].data,
@@ -157,13 +159,21 @@ const MenuBot = () => {
     const action = addCart(item);
     dispatchCart(action);
   };
+
+  const handleaddLove = (item) => {
+    console.log(item);
+    const action = addFavorite(item);
+    dispatchLove(action);
+  };
   return (
     <div className="container">
       <div className="product">
         {/*  menu product */}
         <div className="product_menu">
           <div className="col-12 col-md-4">
-            <h4>SẢN PHẨM NỔI BẬT NHẤT</h4>
+            <div className="text-sm font-bold underline">
+              SẢN PHẨM NỔI BẬT NHẤT
+            </div>
           </div>
           <div className="col-12 col-md-8 product_menu-left">
             {dataMenu.map((item, index) => {
@@ -247,6 +257,8 @@ const MenuBot = () => {
                   onClicSee={() => HandleClickSee(item)}
                   start={item.start}
                   onClickaddCard={() => handleaddCard(item)}
+                  onClickaddLove={() => handleaddLove(item)}
+                  // loveStatus={loveStatus}
                 />
               </div>
             ))}

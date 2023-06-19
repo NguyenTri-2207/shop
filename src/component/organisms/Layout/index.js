@@ -46,9 +46,10 @@ const Layout = ({ children }) => {
   const [showCart, setShowCart] = useState(false);
   const [showLove, setShowLove] = useState(false);
   const [showUser, setShowUser] = useState(false);
-  const [dataTest, setDataTest] = useState("");
   // gọi data redux cart
   const dataCartRedux = useSelector((state) => state.cart);
+  const dataFavoriteRedux = useSelector((state) => state.favorite);
+  console.log(dataFavoriteRedux);
   const totalCart =
     dataCartRedux.length > 0 &&
     dataCartRedux?.reduce(
@@ -62,12 +63,7 @@ const Layout = ({ children }) => {
         accumulator + curValue.price * curValue.quantity,
       0
     );
-  useEffect(() => {
-    fetch(`/api/greeting`)
-      .then((response) => response.json())
-      // 4. Setting *dogImage* to the image url that we received from the response above
-      .then((data) => setDataTest(data));
-  }, []);
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUserSucsecss(user);
@@ -188,11 +184,16 @@ const Layout = ({ children }) => {
                       style={{ fontSize: "10px", right: 1, top: -1 }}
                       bg="secondary"
                     >
-                      0
+                      {dataFavoriteRedux.length}
                     </Badge>
                   </Button>
                 </div>
-                {showLove && <Love ClickClose={() => setShowLove(false)} />}
+                {showLove && (
+                  <Love
+                    data={dataFavoriteRedux}
+                    ClickClose={() => setShowLove(false)}
+                  />
+                )}
                 <div className="positon-relative">
                   <Button
                     className="btnheart"

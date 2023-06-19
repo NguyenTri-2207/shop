@@ -1,6 +1,7 @@
 import * as React from "react";
 import { FaCertificate } from "react-icons/fa";
 import {
+  AiFillHeart,
   AiOutlineHeart,
   AiOutlineShoppingCart,
   AiFillStar,
@@ -11,6 +12,7 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 const dataStart = [1, 1, 1, 1, 1];
 const dollarUSLocale = Intl.NumberFormat("en-US");
+
 const CardProduct = ({
   title,
   img,
@@ -21,9 +23,11 @@ const CardProduct = ({
   priceDiscount,
   className,
   onClickaddCard,
+  onClickaddLove,
   onClicSee,
   start,
   cardSale,
+  loveStatus,
 }) => (
   <div className={`cardpro ${className ? className : ""}`}>
     <div className="cardpro_installment">Trả góp 0%</div>
@@ -74,9 +78,21 @@ const CardProduct = ({
           <Button
             className="btnheart"
             variant="none d-flex position-relative  pb-0"
-            onClick={onClickaddCard}
+            onClick={onClickaddLove}
           >
-            <AiOutlineHeart style={{ fontSize: "20px" }} className="" />{" "}
+            {loveStatus || false ? (
+              <AiFillHeart
+                style={{ fontSize: "20px" }}
+                className={" text-danger "}
+              />
+            ) : (
+              <AiOutlineHeart
+                style={{ fontSize: "20px" }}
+                className={
+                  `${loveStatus} ? text-danger : text-black` || "text-danger"
+                }
+              />
+            )}{" "}
           </Button>
           <Button
             className="btnheart"
