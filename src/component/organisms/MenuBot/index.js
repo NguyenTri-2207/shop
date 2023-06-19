@@ -70,6 +70,7 @@ const customStyles = {
 };
 
 const MenuBot = () => {
+  const dispatchCart = useDispatch();
   const [tab, dispatch] = useReducer(reducer, {
     id: 1,
     data: dataMenu[0].data,
@@ -79,7 +80,6 @@ const MenuBot = () => {
 
   const [dataProduct, setDataProduct] = useState(tab.data);
   const [dataCard, setDataCard] = useState([]);
-  const [dataCart, setDataCart] = useState({});
 
   const { setLogin, userSucsecss } = useContext(LoginContex);
 
@@ -106,7 +106,6 @@ const MenuBot = () => {
       setDataProduct(data);
     } else if (value.value === 2) {
       setDataProduct(() =>
-        // console.log(data)
         // data.slice(0).sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
         data.slice(0).filter((item) => item.price < 10000000)
       );
@@ -153,19 +152,10 @@ const MenuBot = () => {
   };
   // cart data card redux
 
-  const dispatchCart = useDispatch();
-  useEffect(() => {
-    const action = addCart(dataCart);
-    dispatchCart(action);
-  }, [dataCart, dispatchCart]);
-
-  // add card
+  // add card to redux
   const handleaddCard = (item) => {
-    if (userSucsecss) {
-      setDataCart(item);
-    } else {
-      setLogin(true);
-    }
+    const action = addCart(item);
+    dispatchCart(action);
   };
   return (
     <div className="container">

@@ -32,10 +32,6 @@ function App() {
             }
           />
           <Route path="/login" element={<Contact />} />
-          {/* <Route path="/iphone" element={<div><Iphone /></div>}>
-            <Route path="12" element={<div>9</div>} />
-            <Route path="sent" element={<div>10dff dfdfdff</div>} />
-          </Route> */}
           <Route path="iphone" element={<Iphone />} />
           <Route path="thanh-toan" element={<Payment />} />
         </Routes>

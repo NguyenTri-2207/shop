@@ -37,7 +37,6 @@ import logo from "../../../images/icons/logo.png";
 import firebase from "../../../service/firebase";
 import { LoginContex } from "../../context";
 import { Link } from "react-router-dom";
-
 const Layout = ({ children }) => {
   const [showMenuMobile, setShowMenuMobile] = useState(false);
   // const [] = useState(false);
@@ -49,18 +48,26 @@ const Layout = ({ children }) => {
   const [showUser, setShowUser] = useState(false);
   const [dataTest, setDataTest] = useState("");
   // gọi data redux cart
-  const dataCart = useSelector((state) => state.cart);
-
-  // console.log(dataCart);
-  // gọi data login
-
+  const dataCartRedux = useSelector((state) => state.cart);
+  const totalCart =
+    dataCartRedux.length > 0 &&
+    dataCartRedux?.reduce(
+      (accumulator, curValue) => accumulator + curValue.quantity,
+      0
+    );
+  const totalPrice =
+    dataCartRedux.length > 0 &&
+    dataCartRedux?.reduce(
+      (accumulator, curValue) =>
+        accumulator + curValue.price * curValue.quantity,
+      0
+    );
   useEffect(() => {
     fetch(`/api/greeting`)
       .then((response) => response.json())
       // 4. Setting *dogImage* to the image url that we received from the response above
       .then((data) => setDataTest(data));
   }, []);
-  console.log(dataTest);
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUserSucsecss(user);
@@ -198,13 +205,14 @@ const Layout = ({ children }) => {
                       style={{ fontSize: "10px", right: 1, top: -1 }}
                       bg="secondary"
                     >
-                      {dataCart.length - 1}
+                      {totalCart}
                     </Badge>
                   </Button>
                   {showCart && (
                     <Cart
                       ClickClose={() => setShowCart(false)}
-                      data={dataCart}
+                      data={dataCartRedux}
+                      totalPrice={totalPrice}
                     />
                   )}
                 </div>

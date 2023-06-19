@@ -78,7 +78,6 @@ const SliderProduct = () => {
     .map((item) =>
       item.filter((i) => i && i.priceDiscount > 14 && results.push(i))
     );
-  // console.log(results);
   return (
     <div className="container">
       <div className="saleOnline">

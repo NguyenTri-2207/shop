@@ -7,9 +7,9 @@ import "./index.scss";
 //components
 import { signInWithGoogle } from "../../../service/firebase";
 import logo from "../../../images/icons/logo.png";
-import { AiOutlinePhone, AiFillGoogleCircle, AiFillMail } from 'react-icons/ai'
+import { AiOutlinePhone, AiFillGoogleCircle, AiFillMail } from "react-icons/ai";
 export default function LogIn({ handleClose, show, handleShow }) {
-  const [showPhone, setShowPhone] = useState(false)
+  const [showPhone, setShowPhone] = useState(false);
   const handleRegister = () => {
     // conso?
   };
@@ -35,13 +35,12 @@ export default function LogIn({ handleClose, show, handleShow }) {
             </Modal.Title>
           </Modal.Header>
           <Form>
-            {
-              showPhone ? <Modal.Body className="text-center justify-content-center px-5">
+            {showPhone ? (
+              <Modal.Body className="text-center justify-content-center px-5">
                 <Form>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Phone Number</Form.Label>
                     <Form.Control type="text" placeholder="Enter phone " />
-
                   </Form.Group>
 
                   <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -53,9 +52,10 @@ export default function LogIn({ handleClose, show, handleShow }) {
                     Submit
                   </Button>
                 </Form>
-              </Modal.Body> :
-                <Modal.Body className="text-center justify-content-center py-4">
-                  {/* <Form.Group className="mb-3" controlId="formBasicEmail">
+              </Modal.Body>
+            ) : (
+              <Modal.Body className="text-center justify-content-center py-4">
+                {/* <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Tên đăng nhập</Form.Label>
                     <Form.Control
                       onChange={handleNameChange}
@@ -64,33 +64,36 @@ export default function LogIn({ handleClose, show, handleShow }) {
                     />
                   </Form.Group> */}
 
+                <div
+                  onClick={signInWithGoogle}
+                  className="SigninButton flex justify-content-center align-items-center mb-3"
+                >
+                  <AiFillGoogleCircle />
+                  <span className="SigninButton_title__30L9p ms-2">
+                    Tiếp tục với Google
+                  </span>
+                </div>
+                <div
+                  onClick={() => console.log(1)}
+                  className=" SigninButton flex justify-content-center align-items-center "
+                >
+                  <AiFillMail />
+                  <span className="SigninButton_title__30L9p ms-2">
+                    Tiếp tục với Facebook
+                  </span>
+                </div>
+                <div
+                  onClick={() => setShowPhone(true)}
+                  className="SigninButton flex justify-content-center align-items-center mb-3"
+                >
+                  <AiOutlinePhone className="block" />
 
-                  <div onClick={signInWithGoogle} className="SigninButton flex justify-content-center align-items-center mb-3">
-                    <AiFillGoogleCircle
-                    />
-                    <span className="SigninButton_title__30L9p ms-2">
-                      Tiếp tục với Google
-                    </span>
-                  </div>
-                  <div onClick={() => console.log(1)} className=" SigninButton flex justify-content-center align-items-center ">
-                    <AiFillMail />
-                    <span className="SigninButton_title__30L9p ms-2">
-                      Tiếp tục với Facebook
-                    </span>
-                  </div>
-                  <div onClick={() => setShowPhone(true)} className="SigninButton flex justify-content-center align-items-center mb-3">
-                    <AiOutlinePhone className="block" />
-
-                    <span className="SigninButton_title__30L9p ms-2">
-                      Sử dụng email / số điện thoại
-                    </span>
-                  </div>
-                </Modal.Body>
-            }
-
-
-
-
+                  <span className="SigninButton_title__30L9p ms-2">
+                    Sử dụng email / số điện thoại
+                  </span>
+                </div>
+              </Modal.Body>
+            )}
           </Form>
         </div>
 
@@ -103,8 +106,6 @@ export default function LogIn({ handleClose, show, handleShow }) {
           </p>
         </Modal.Footer>
       </Modal>
-
-
     </>
   );
 }
