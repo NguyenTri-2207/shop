@@ -88,7 +88,6 @@ const SliderProduct = () => {
           />
         </div>
         <h4 className="saleOnline_time">
-          {" "}
           <span>F</span>
           <IoIosFlash />
           <span>ASH SALE ONLINE:</span> <Timer />
@@ -106,7 +105,6 @@ const SliderProduct = () => {
                 discount={item.discount}
                 priceDiscount={item.priceDiscount}
                 start={item.start}
-                cardSale={true}
               />
             ))}
         </Slider>

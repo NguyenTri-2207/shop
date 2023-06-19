@@ -1,6 +1,6 @@
 .cardHeader {
   padding: 8px;
-  width: 120px;
+  width: 100px;
   height: 40px;
   border-radius: 10px;
   margin-left: 18px;
@@ -9,12 +9,12 @@
   text-align: center;
   font-size: 14px;
   font-weight: 600;
-
+  margin: 16px 8px 0;
   cursor: pointer;
   box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.16), 1px 3px 6px rgba(0, 0, 0, 0.23);
 
-  @media (max-width: 500px) {
-    width: 130px;
+  @media (max-width: 768px) {
+    width: 110px;
     margin: 16px 8px 0;
   }
   &:focus {

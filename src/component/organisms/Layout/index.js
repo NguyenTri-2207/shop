@@ -49,7 +49,7 @@ const Layout = ({ children }) => {
   // gọi data redux cart
   const dataCartRedux = useSelector((state) => state.cart);
   const dataFavoriteRedux = useSelector((state) => state.favorite);
-  console.log(dataFavoriteRedux);
+
   const totalCart =
     dataCartRedux.length > 0 &&
     dataCartRedux?.reduce(

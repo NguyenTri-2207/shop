@@ -161,7 +161,6 @@ const MenuBot = () => {
   };
 
   const handleaddLove = (item) => {
-    console.log(item);
     const action = addFavorite(item);
     dispatchLove(action);
   };
@@ -171,9 +170,7 @@ const MenuBot = () => {
         {/*  menu product */}
         <div className="product_menu">
           <div className="col-12 col-md-4">
-            <div className="text-sm font-bold underline">
-              SẢN PHẨM NỔI BẬT NHẤT
-            </div>
+            <h4>SẢN PHẨM NỔI BẬT NHẤT</h4>
           </div>
           <div className="col-12 col-md-8 product_menu-left">
             {dataMenu.map((item, index) => {
